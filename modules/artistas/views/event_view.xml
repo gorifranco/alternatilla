@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="view_event_groups_form_custom" model="ir.ui.view">
+            <field name="name">event.event.form.custom</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids']"
+                    position="after">
+                    <field name="grupo" options="{'no_create': True}" domain="[('partner_id', '=', partner_id)]"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

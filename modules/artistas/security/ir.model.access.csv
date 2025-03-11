@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_artistas_artistas,artistas.artistas,model_artistas_artistas,base.group_user,1,1,1,1
+access_artistas_tags,artistas.tags,model_artistas_tags,base.group_user,1,1,1,1
+access_artistas_grupos,artistas.grupos,model_artistas_grupos,base.group_user,1,1,1,1
