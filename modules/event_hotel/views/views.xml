@@ -5,9 +5,12 @@
       <field name="model">event.event</field>
       <field name="inherit_id" ref="event.view_event_form" />
       <field name="arch" type="xml">
-        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids'][2]"
+        <xpath expr="//field[@name='date_begin']" position="after">
+          <field name="apertura_de_puertas" />
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids'][1]"
           position="after">
-          <field name="promotor_id"/>
+          <field name="promotor_id" />
           <field name="hotel_id" />
           <field name="comentario_hotel" />
           <field name="link_entradas" />
