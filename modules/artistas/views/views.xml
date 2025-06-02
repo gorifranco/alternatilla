@@ -77,11 +77,13 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
+            <field name="image" widget="image" class="oe_avatar"/>
             <group>
               <field name="partner_id" />
               <field name="descripcion" />
               <field name="componentes" />
               <field name="tags_ids" widget="many2many_tags" />
+              <field name="company_id"/>
               <field name="artistas_ids" />
             </group>
           </sheet>

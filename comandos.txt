@@ -1,2 +1,2 @@
-python odoo-bin -r pguser -w pguser --addons-path=addons,modules -d pguser
-python odoo-bin scaffold add_avatar_image_event modules
+python odoo-bin --addons-path=addons,modules -d pguser -r pguser -w pguser --without-demo=all
+python odoo-bin scaffold event_view modules

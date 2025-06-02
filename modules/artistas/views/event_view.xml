@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids']"
                     position="after">
-                    <field name="grupo" options="{'no_create': True}" domain="[('partner_id', '=', partner_id)]"/>
+                    <field name="grupos" options="{'no_create': True}" widget="many2many_tags"/>
                 </xpath>
             </field>
         </record>

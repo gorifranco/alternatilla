@@ -5,10 +5,10 @@
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
     'description': """
-Long description of module's purpose
+Afegeix arties i grups de música a les esdeveniments.
     """,
 
-    'author': "My Company",
+    'author': "Gori",
     'website': "https://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
