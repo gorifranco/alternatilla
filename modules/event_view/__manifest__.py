@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "event_view",
-
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
-
+    'name': "Event View",
+    'summary': "Customize and enhance event view display on the website",
     'description': """
-Long description of module's purpose
+        This module customizes the presentation and structure of event-related views
+        on the website, including the integration of images and additional event details.
+        Requires the m2m_images module to manage optimized image handling.
     """,
 
     'author': "My Company",
@@ -18,7 +18,7 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'event', 'm2m_images', 'website_event'],
 
     # always loaded
     'data': [

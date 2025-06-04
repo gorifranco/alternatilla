@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_m2m_images_user,m2m_images.user,model_m2m_images_m2m_images,base.group_user,1,0,0,0
+access_m2m_images_admin,m2m_images.admin,model_m2m_images_m2m_images,base.group_system,1,1,1,1
