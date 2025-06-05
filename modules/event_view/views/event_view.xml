@@ -1,48 +1,56 @@
 <odoo>
     <data>
-        <xpath expr="//field[@name='kanban_state']" position="after">
-            <field name="cover_image" widget="image" class="oe_avatar ml-3 mr-3" string="Imatge" />
-        </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-            <page string="Vista web">
-                <group>
-                    <group>
-                        <field name="imatges_web"
-                            help="Imatges de la columna principals"
-                            widget="many2many_binary" string="Imatges" />
-                        <field name="videos" help="Urls dels videos que es vulguin afegir."
-                            string="VideosText">
-                            <list>
-                                <field name="url" string="url" />
-                            </list>
-                            <form>
-                                <header />
-                                <sheet string="event_event_line" name="studio_sheet_5559ce">
-                                    <div class="oe_title" name="studio_div_ae95a4">
-                                        <h1>
-                                            <field name="url" required="1" placeholder="Url..." />
-                                        </h1>
-                                    </div>
-                                    <group>
-                                        <group/>
-                                    </group>
-                                </sheet>
-                            </form>
-                        </field>
-                        <field name="text_principal" string="Text Principal" />
-                    </group>
-                    <group>
-                        <field name="imatges_laterals" widget="many2many_binary" />
-                        <field name="laterals_inferior" />
-                        <field name="compromesos" widget="many2many_tags"
-                            domain="[(&quot;name&quot;, &quot;=ilike&quot;, &quot;Logo%&quot;)]" />
-                        <field name="patrocinadors" widget="many2many_tags"
-                            domain="[(&quot;name&quot;, &quot;=ilike&quot;, &quot;Logo%&quot;)]" />
-                        <field name="colaboradors" widget="many2many_tags"
-                            domain="[(&quot;name&quot;, &quot;=ilike&quot;, &quot;Logo%&quot;)]" />
-                    </group>
-                </group>
-            </page>
-        </xpath>
+        <record id="view_event_event_form" model="ir.ui.view">
+            <field name="name">event.event.form.web.view</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='kanban_state']" position="after">
+                    <field name="cover_image" widget="image" class="oe_avatar ml-3 mr-3"
+                        string="Imatge" />
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Vista web">
+                        <group>
+                            <group>
+                                <field name="imatges_web"
+                                    help="Imatges de la columna principals"
+                                    widget="many2many_binary" string="Imatges" />
+                                <field name="videos" help="Urls dels videos que es vulguin afegir."
+                                    string="Videos">
+                                    <list>
+                                        <field name="url" string="url" />
+                                    </list>
+                                    <form>
+                                        <header />
+                                        <sheet string="event_event_line" name="studio_sheet_5559ce">
+                                            <div class="oe_title" name="studio_div_ae95a4">
+                                                <h1>
+                                                    <field name="url" required="1"
+                                                        placeholder="Url..." />
+                                                </h1>
+                                            </div>
+                                        </sheet>
+                                    </form>
+                                </field>
+                                <field name="text_principal" string="Text Principal" />
+                            </group>
+                            <group>
+                                <field name="imatges_laterals" widget="many2many_binary"
+                                    String="Imatges Laterals" />
+                                <field name="cartells" widget="many2many_binary" Sritng="Cartells" />
+                                <field name="compromesos" widget="many2many_tags"
+                                    domain="[(&quot;name&quot;, &quot;=ilike&quot;, &quot;Logo%&quot;)]" />
+                                <field name="patrocinadors" widget="many2many_tags"
+                                    domain="[(&quot;name&quot;, &quot;=ilike&quot;, &quot;Logo%&quot;)]" />
+                                <field name="colaboradors" widget="many2many_tags"
+                                    domain="[(&quot;name&quot;, &quot;=ilike&quot;, &quot;Logo%&quot;)]" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>
