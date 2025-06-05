@@ -1,0 +1,156 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* event_view
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: event_view 1.0\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2025-06-05 11:20+0000\n"
+"PO-Revision-Date: 2025-06-05 11:25+0000\n"
+"Last-Translator: Gori\n"
+"Language-Team: Català\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__collaborators
+msgid "Collaborators"
+msgstr "Col·laboradors"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__commitments
+msgid "Commitments"
+msgstr "Compromesos"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__cover_image
+msgid "Cover Image"
+msgstr "Imatge de portada"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_website_video__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_website_video__create_date
+msgid "Created on"
+msgstr "Creat el"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_website_video__display_name
+msgid "Display Name"
+msgstr "Nom visible"
+
+#. module: event_view
+#: model:ir.model,name:event_view.model_event_event
+#: model:ir.model.fields,field_description:event_view.field_website_video__event_id
+msgid "Event"
+msgstr "Esdeveniment"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_website_video__id
+msgid "ID"
+msgstr "ID"
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "Image"
+msgstr "Imatge"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__cover_image_1024
+msgid "Image 1024px"
+msgstr "Imatge 1024px"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__cover_image_256
+msgid "Image 256px"
+msgstr "Imatge 256px"
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "Images"
+msgstr "Imatges"
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "Images of the main column"
+msgstr "Imatges de la columna principal"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_website_video__write_uid
+msgid "Last Updated by"
+msgstr "Actualitzat per"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_website_video__write_date
+msgid "Last Updated on"
+msgstr "Actualitzat el"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__main_text
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "Main Text"
+msgstr "Text principal"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__posters
+msgid "Posters"
+msgstr "Cartells"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__side_images
+msgid "Side Images"
+msgstr "Imatges laterals"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__sponsors
+msgid "Sponsors"
+msgstr "Patrocinadors"
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "URLs of the videos you want to add."
+msgstr "URLs dels vídeos que es vulguin afegir."
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "Url..."
+msgstr "URL..."
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_website_video__url
+msgid "Video"
+msgstr "Vídeo"
+
+#. module: event_view
+#: model:ir.model,name:event_view.model_website_video
+#: model:ir.model.fields,field_description:event_view.field_event_event__videos
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "Videos"
+msgstr "Vídeos"
+
+#. module: event_view
+#: model:ir.model.fields,field_description:event_view.field_event_event__web_images
+msgid "Web Images"
+msgstr "Imatges web"
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "Web view"
+msgstr "Vista web"
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "event_event_line"
+msgstr "línia_event"
+
+#. module: event_view
+#: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
+msgid "url"
+msgstr "url"

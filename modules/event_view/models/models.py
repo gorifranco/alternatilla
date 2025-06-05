@@ -6,49 +6,57 @@ from odoo import models, fields
 class EventViewExtension(models.Model):
     _inherit = 'event.event'
     
-    cover_image = fields.Image(string="Image", max_width=1920, max_height=1920)
+    cover_image = fields.Image(string="Cover Image", max_width=1920, max_height=1920)
     cover_image_1024 = fields.Image("Image 1024px", related="cover_image", max_width=1024, max_height=1024, store=True)
     cover_image_256 = fields.Image("Image 256px", related="cover_image", max_width=256, max_height=256, store=True)
     
-    imatges_web = fields.Many2many('m2m_images', string="Imatges web")
+    web_images = fields.Many2many('m2m_images', string="Web Images")
     videos = fields.One2many('website.video', 'event_id', string="Videos")
-    text_principal = fields.Html(string="Text Principal")
-    imatges_laterals = fields.Many2many(
+    main_text = fields.Html(string="Main Text", translate=True)
+    side_images = fields.Many2many(
         'm2m_images', 
         'event_image_laterals_rel',
         'event_id', 'image_id', 
-        string="Imatges laterals"
+        string="Side Images"
     )
-    cartells = fields.Many2many(
+    posters = fields.Many2many(
         'm2m_images', 
-        'event_image_cartells_rel',
+        'event_image_posters_rel',
         'event_id', 'image_id', 
-        string="Cartells"
+        string="Posters"
     )
 
-    compromesos = fields.Many2many(
-    'res.partner',
-    'event_event_res_partner_compromesos_rel',
-    'event_id',
-    'partner_id',
-    string="Compromesos"
-    )
-
-    patrocinadors = fields.Many2many(
+    commitments = fields.Many2many(
         'res.partner',
-        'event_event_res_partner_patrocinadors_rel',
+        'event_event_res_partner_commitments_rel',
         'event_id',
         'partner_id',
-        string="Patrocinadors"
+        string="Commitments"
     )
 
-    colaboradors = fields.Many2many(
+    sponsors = fields.Many2many(
         'res.partner',
-        'event_event_res_partner_colaboradors_rel',
+        'event_event_res_partner_sponsors_rel',
         'event_id',
         'partner_id',
-        string="Colaboradors"
+        string="Sponsors"
     )
+
+    collaborators = fields.Many2many(
+        'res.partner',
+        'event_event_res_partner_collaborators_rel',
+        'event_id',
+        'partner_id',
+        string="Collaborators"
+    )
+    
+    
+class EventVideos(models.Model):
+    _name = "website.video"
+    _description = "Videos"
+    
+    url = fields.Char(string="Video URL", required=True)
+    event_id = fields.Many2one('event.event', string="Related Event")
     
     
 class EventVideos(models.Model):
