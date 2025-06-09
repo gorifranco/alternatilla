@@ -1,0 +1,146 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* artistas
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-09 15:55+0000\n"
+"PO-Revision-Date: 2025-06-09 15:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: artistas
+#: model:ir.model,name:artistas.model_artist_artist
+msgid "Artist"
+msgstr "Artista"
+
+#. module: artistas
+#: model:ir.model,name:artistas.model_artist_tags
+msgid "Artist Tag"
+msgstr "Etiqueta de artista"
+
+#. module: artistas
+#: model:ir.actions.act_window,name:artistas.artist_action_window
+#: model:ir.model.fields,field_description:artistas.field_artist_band__artist_ids
+#: model:ir.ui.menu,name:artistas.artist_menu_artists
+#: model:ir.ui.menu,name:artistas.artist_menu_root
+msgid "Artists"
+msgstr "Artist"
+
+#. module: artistas
+#: model:ir.actions.act_window,name:artistas.artist_bands_action
+#: model:ir.model.fields,field_description:artistas.field_event_event__bands
+#: model:ir.ui.menu,name:artistas.artist_menu_bands
+msgid "Bands"
+msgstr "Grupos"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_band__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__partner_id
+#: model:ir.model.fields,field_description:artistas.field_artist_band__partner_id
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__create_uid
+#: model:ir.model.fields,field_description:artistas.field_artist_band__create_uid
+#: model:ir.model.fields,field_description:artistas.field_artist_tags__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__create_date
+#: model:ir.model.fields,field_description:artistas.field_artist_band__create_date
+#: model:ir.model.fields,field_description:artistas.field_artist_tags__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__description
+#: model:ir.model.fields,field_description:artistas.field_artist_band__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__display_name
+#: model:ir.model.fields,field_description:artistas.field_artist_band__display_name
+#: model:ir.model.fields,field_description:artistas.field_artist_tags__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: artistas
+#: model:ir.model,name:artistas.model_event_event
+msgid "Event"
+msgstr "Evento"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__id
+#: model:ir.model.fields,field_description:artistas.field_artist_band__id
+#: model:ir.model.fields,field_description:artistas.field_artist_tags__id
+msgid "ID"
+msgstr "ID"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_band__image
+msgid "Image"
+msgstr "Imagen"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_band__image_256
+msgid "Image 256px"
+msgstr "Imagen 256px"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_band__image_64
+msgid "Image 64px"
+msgstr "Imagen 64px"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__write_uid
+#: model:ir.model.fields,field_description:artistas.field_artist_band__write_uid
+#: model:ir.model.fields,field_description:artistas.field_artist_tags__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__write_date
+#: model:ir.model.fields,field_description:artistas.field_artist_band__write_date
+#: model:ir.model.fields,field_description:artistas.field_artist_tags__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_band__manager_id
+msgid "Manager"
+msgstr "Mánager"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_band__members
+msgid "Members"
+msgstr "Miembros"
+
+#. module: artistas
+#: model:ir.model,name:artistas.model_artist_band
+msgid "Music Band"
+msgstr "Gruop"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_tags__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: artistas
+#: model:ir.model.fields,field_description:artistas.field_artist_artist__tag_ids
+#: model:ir.model.fields,field_description:artistas.field_artist_band__tag_ids
+msgid "Tags"
+msgstr "Etiquetas"

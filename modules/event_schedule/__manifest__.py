@@ -8,7 +8,7 @@
         Adds schedule to events to allow for better planning.
     """,
 
-    'author': "My Company",
+    'author': "Gori",
     'website': "https://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing

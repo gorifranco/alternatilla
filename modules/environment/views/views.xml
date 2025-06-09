@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+<!--
+    
+        <record id="view_module_search_add_filter_by_author" model="ir.ui.view">
+      <field name="name">ir.module.module.search.add.filter.autor</field>
+      <field name="model">ir.module.module</field>
+      <field name="inherit_id" ref="base.view_module_filter" />
+      <field name="arch" type="xml">
+        <xpath expr="//filter[@name='extra']" position="before">
+          <filter name="author_gori" string="Author: Gori" domain="[('author', '=', 'Gori')]" />
+        </xpath>
+      </field>
+    </record>
+
+-->
+
+
+  </data>
+</odoo>

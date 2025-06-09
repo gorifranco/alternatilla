@@ -2,29 +2,29 @@
   <data>
     <!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="artistas.list">
-      <field name="name">artistas list</field>
-      <field name="model">artistas.artistas</field>
+    <record model="ir.ui.view" id="artist_list">
+      <field name="name">artist list</field>
+      <field name="model">artist.artist</field>
       <field name="arch" type="xml">
         <list>
           <field name="partner_id" />
-          <field name="descripcion" />
+          <field name="description" />
         </list>
       </field>
     </record>
 
     <!-- Artists form view -->
 
-    <record model="ir.ui.view" id="artistas.form">
-      <field name="name">artistas.form</field>
-      <field name="model">artistas.artistas</field>
+    <record model="ir.ui.view" id="artist_form">
+      <field name="name">artist.form</field>
+      <field name="model">artist.artist</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
             <group>
               <field name="partner_id" />
-              <field name="descripcion" />
-              <field name="tags_ids" widget="many2many_tags" />
+              <field name="description" />
+              <field name="tag_ids" widget="many2many_tags" />
             </group>
           </sheet>
         </form>
@@ -34,9 +34,9 @@
 
     <!-- actions opening views on models -->
 
-    <record model="ir.actions.act_window" id="artistas.action_window">
-      <field name="name">Artistas</field>
-      <field name="res_model">artistas.artistas</field>
+    <record model="ir.actions.act_window" id="artist_action_window">
+      <field name="name">Artists</field>
+      <field name="res_model">artist.artist</field>
       <field name="view_mode">list,form</field>
     </record>
 
@@ -58,9 +58,9 @@
 
     <!-- Groups list -->
 
-    <record model="ir.ui.view" id="artistas.grupos_list">
-      <field name="name">Grupos</field>
-      <field name="model">artistas.grupos</field>
+    <record model="ir.ui.view" id="artist_bands_list">
+      <field name="name">Bands</field>
+      <field name="model">artist.band</field>
       <field name="arch" type="xml">
         <list>
           <field name="partner_id" />
@@ -71,20 +71,25 @@
 
     <!-- Groups form view -->
 
-    <record model="ir.ui.view" id="artistas.grupos_form">
-      <field name="name">artistas.grupos.form</field>
-      <field name="model">artistas.grupos</field>
+    <record model="ir.ui.view" id="artist_bands_form">
+      <field name="name">artist.band.form</field>
+      <field name="model">artist.band</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <field name="image" widget="image" class="oe_avatar"/>
+            <field name="image" widget="image" class="oe_avatar" />
             <group>
-              <field name="partner_id" />
-              <field name="descripcion" />
-              <field name="componentes" />
-              <field name="tags_ids" widget="many2many_tags" />
-              <field name="company_id"/>
-              <field name="artistas_ids" />
+              <group>
+                <field name="partner_id" />
+                <field name="description" />
+                <field name="artist_ids" widget="many2many_tags" />
+
+              </group>
+              <group>
+                <field name="members" />
+                <field name="company_id" />
+                <field name="tag_ids" widget="many2many_tags" />
+              </group>
             </group>
           </sheet>
         </form>
@@ -93,23 +98,23 @@
 
 
     <!-- actions grupos -->
-    <record model="ir.actions.act_window" id="artistas.grupos_action">
-      <field name="name">Grupos</field>
-      <field name="res_model">artistas.grupos</field>
+    <record model="ir.actions.act_window" id="artist_bands_action">
+      <field name="name">Bands</field>
+      <field name="res_model">artist.band</field>
       <field name="view_mode">list,form</field>
     </record>
 
 
     <!-- Top menu item -->
 
-    <menuitem name="Artistas" id="artistas.menu_root" />
+    <menuitem name="Artists" id="artist_menu_root" />
 
     <!-- menu categories -->
 
-    <menuitem name="Grupos" id="artistas.menu_grupos" parent="artistas.menu_root"
-      action="artistas.grupos_action" />
-    <menuitem name="Artistas" id="artistas.menu_artistas" parent="artistas.menu_root"
-      action="artistas.action_window" />
+    <menuitem name="Bands" id="artist_menu_bands" parent="artist_menu_root"
+      action="artist_bands_action" />
+    <menuitem name="Artists" id="artist_menu_artists" parent="artist_menu_root"
+      action="artist_action_window" />
 
   </data>
 </odoo>

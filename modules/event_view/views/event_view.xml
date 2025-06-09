@@ -24,7 +24,7 @@
                                     </list>
                                     <form>
                                         <header />
-                                        <sheet string="event_event_line">
+                                        <sheet>
                                             <div class="oe_title">
                                                 <h1>
                                                     <field name="url" required="1"

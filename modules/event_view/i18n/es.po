@@ -4,13 +4,13 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: event_view 1.0\n"
-"Report-Msgid-Bugs-To:\n"
-"POT-Creation-Date: 2025-06-05 11:20+0000\n"
-"PO-Revision-Date: 2025-06-05 11:25+0000\n"
+"Project-Id-Version: event_view 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-05 15:54+0000\n"
+"PO-Revision-Date: 2025-06-05 15:54+0000\n"
 "Last-Translator: Gori\n"
-"Language-Team: Català\n"
-"Language: ca\n"
+"Language-Team: Español\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,38 +19,38 @@ msgstr ""
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__collaborators
 msgid "Collaborators"
-msgstr "Col·laboradors"
+msgstr "Colaboradores"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__commitments
 msgid "Commitments"
-msgstr "Compromesos"
+msgstr "Comprometidos"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__cover_image
 msgid "Cover Image"
-msgstr "Imatge de portada"
+msgstr "Imagen de portada"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_website_video__create_uid
 msgid "Created by"
-msgstr "Creat per"
+msgstr "Creado por"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_website_video__create_date
 msgid "Created on"
-msgstr "Creat el"
+msgstr "Creado el"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_website_video__display_name
 msgid "Display Name"
-msgstr "Nom visible"
+msgstr "Nombre visible"
 
 #. module: event_view
 #: model:ir.model,name:event_view.model_event_event
 #: model:ir.model.fields,field_description:event_view.field_website_video__event_id
 msgid "Event"
-msgstr "Esdeveniment"
+msgstr "Evento"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_website_video__id
@@ -60,68 +60,68 @@ msgstr "ID"
 #. module: event_view
 #: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
 msgid "Image"
-msgstr "Imatge"
+msgstr "Imagen"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__cover_image_1024
 msgid "Image 1024px"
-msgstr "Imatge 1024px"
+msgstr "Imagen 1024px"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__cover_image_256
 msgid "Image 256px"
-msgstr "Imatge 256px"
+msgstr "Imagen 256px"
 
 #. module: event_view
 #: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
 msgid "Images"
-msgstr "Imatges"
+msgstr "Imágenes"
 
 #. module: event_view
 #: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
 msgid "Images of the main column"
-msgstr "Imatges de la columna principal"
+msgstr "Imágenes de la columna principal"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_website_video__write_uid
 msgid "Last Updated by"
-msgstr "Actualitzat per"
+msgstr "Actualizado por"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_website_video__write_date
 msgid "Last Updated on"
-msgstr "Actualitzat el"
+msgstr "Actualizado el"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__main_text
 #: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
 msgid "Main Text"
-msgstr "Text principal"
+msgstr "Texto principal"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__posters
 msgid "Posters"
-msgstr "Cartells"
+msgstr "Carteles"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__side_images
 msgid "Side Images"
-msgstr "Imatges laterals"
+msgstr "Imágenes laterales"
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__sponsors
 msgid "Sponsors"
-msgstr "Patrocinadors"
+msgstr "Patrocinadores"
 
 #. module: event_view
 #: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
-msgid "URLs of the videos you want to add."
-msgstr "URLs dels vídeos que es vulguin afegir."
+msgid "URLs of the videos you want to add." 
+msgstr "URLs de los vídeos que desea agregar."
 
 #. module: event_view
 #: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form
 msgid "Url..."
-msgstr "URL..."
+msgstr "Url..."
 
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_website_video__url
@@ -138,7 +138,7 @@ msgstr "Vídeos"
 #. module: event_view
 #: model:ir.model.fields,field_description:event_view.field_event_event__web_images
 msgid "Web Images"
-msgstr "Imatges web"
+msgstr "Imágenes de la web"
 
 #. module: event_view
 #: model_terms:ir.ui.view,arch_db:event_view.view_event_event_form

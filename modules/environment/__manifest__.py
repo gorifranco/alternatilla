@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Event View",
-    'summary': "Customize and enhance event view display on the website",
+    'name': "environment",
+
+    'summary': "Short (1 phrase/line) summary of the module's purpose",
+
     'description': """
-        This module customizes the presentation and structure of event-related views
-        on the website, including the integration of images and additional event details.
-        Requires the m2m_images module to manage optimized image handling.
+Long description of module's purpose
     """,
 
     'author': "Gori",
@@ -18,12 +18,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'event', 'm2m_images', 'website_event'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/event_view.xml',
+        'views/views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
