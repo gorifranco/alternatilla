@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Event Schedule",
+    'name': "roadmap",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
     'description': """
-        Adds schedule to events to allow for better planning.
+Long description of module's purpose
     """,
 
-    'author': "Gori",
+    'author': "My Company",
     'website': "https://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -18,12 +18,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'event', 'calendar'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/event_calendar_view.xml',
+        'views/views.xml',
+        'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

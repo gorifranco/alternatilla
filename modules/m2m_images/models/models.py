@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 
 class Image(models.Model):
-    _name = "image"
+    _name = "m2m_images"
     _order = "id desc"
 
     name = fields.Char(string="Name")

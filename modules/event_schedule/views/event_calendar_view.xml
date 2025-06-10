@@ -7,15 +7,14 @@
             <field name="arch" type="xml">
                 <!-- Añadir la pestaña de horarios después de la pestaña de tickets -->
                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-                    <page string="Horarios" name="event_schedule">
-                        <field name="horarios" mode="list">
+                    <page string="Schedule" name="event_schedule">
+                        <field name="schedule" mode="list">
                             <list editable="bottom">
                                 <field name="name" />
                                 <field name="start"/>
-                                <field name="stop"/>
-                                <field name="description" />
-                                <field name="locations" widget="many2many_tags" />
+                                <field name="location" />
                                 <field name="partner_ids" widget="many2many_tags" />
+                                <field name="description" />
                             </list>
                         </field>
                     </page>
