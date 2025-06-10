@@ -1,60 +1,31 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="roadmap.list">
-      <field name="name">roadmap list</field>
-      <field name="model">roadmap.roadmap</field>
-      <field name="arch" type="xml">
-        <list>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </list>
-      </field>
-    </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="roadmap.action_window">
-      <field name="name">roadmap window</field>
-      <field name="res_model">roadmap.roadmap</field>
-      <field name="view_mode">list,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="roadmap.action_server">
-      <field name="name">roadmap server</field>
-      <field name="model_id" ref="model_roadmap_roadmap"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "list,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="roadmap" id="roadmap.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="roadmap.menu_1" parent="roadmap.menu_root"/>
-    <menuitem name="Menu 2" id="roadmap.menu_2" parent="roadmap.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="roadmap.menu_1_list" parent="roadmap.menu_1"
-              action="roadmap.action_window"/>
-    <menuitem name="Server to list" id="roadmap" parent="roadmap.menu_2"
-              action="roadmap.action_server"/>
--->
+    <report
+      id="action_report_roadmap_cat"
+      model="event.event" 
+      string="Roadmap_CAT"
+      report_type="qweb-pdf"
+      name="event.roadmap_cat"
+      file="event.roadmap_cat"
+      print_report_name="'Full de ruta - %s' % (object.name)"
+    />
+    <report
+      id="action_report_roadmap_es"
+      model="event.event" 
+      string="Roadmap_ES"
+      report_type="qweb-pdf"
+      name="event.roadmap_es"
+      file="event.roadmap_es"
+      print_report_name="'Hoja de ruta - %s' % (object.name)"
+    />
+    <report
+      id="action_report_roadmap_en"
+      model="event.event" 
+      string="Roadmap_EN"
+      report_type="qweb-pdf"
+      name="event.roadmap_en"
+      file="event.roadmap_en"
+      print_report_name="'Roadmap - %s' % (object.name)"
+    />
   </data>
 </odoo>
