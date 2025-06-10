@@ -5,12 +5,12 @@
       <field name="model">event.event</field>
       <field name="inherit_id" ref="event.view_event_form" />
       <field name="arch" type="xml">
-        <field name="website_menu" position="attributes">
-          <attribute name="invisible">1</attribute>
-        </field>
         <field name="seats_limited" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
+        <label for="seats_limited" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </label>
         <field name="badge_format" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
@@ -26,7 +26,6 @@
         <field name="date_tz" position="attributes">
           <attribute name="invisible">1</attribute>
         </field>
-
         <xpath expr="//page[@name='event_communication']" position="attributes">
           <attribute name="invisible">1</attribute>
         </xpath>
@@ -38,5 +37,20 @@
         </xpath>
       </field>
     </record>
+    
+    <record id="view_event_form_website_hidden_camps" model="ir.ui.view">
+      <field name="name">event.event.form.website.hidden</field>
+      <field name="model">event.event</field>
+      <field name="inherit_id" ref="website_event.event_event_view_form" />
+      <field name="arch" type="xml">
+        <field name="website_menu" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <label for="website_menu" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </label>
+      </field>
+    </record>
+  
   </data>
 </odoo>
