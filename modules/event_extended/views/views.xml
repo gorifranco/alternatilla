@@ -5,18 +5,56 @@
       <field name="model">event.event</field>
       <field name="inherit_id" ref="event.view_event_form" />
       <field name="arch" type="xml">
+        <xpath expr="//field[@name='organizer_id']" position="after">
+          <field name="company_id" />
+        </xpath>
         <xpath expr="//field[@name='date_begin']" position="after">
-          <field name="apertura_de_puertas" />
+          <field name="doors_open" />
         </xpath>
         <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids'][1]"
           position="after">
-          <field name="promotor_id" />
-          <field name="hotel_id" />
-          <field name="comentario_hotel" />
-          <field name="link_entradas" />
+          <field name="promoter_id" />
+          <field name="ticket_link" />
+          <field name="free_entry" />
+          <field name="sold_out" />
         </xpath>
-        <xpath expr="//field[@name='company_id']" position="attributes">
-            <attribute name="invisible">0</attribute>
+        <xpath expr="//page[@name='event_notes']" position="after">
+          <page string="Hotel">
+            <group>
+              <group>
+                <field name="hotel_id" />
+                <field name="room_distribution">
+                  <list editable="bottom">
+                    <field name="room_type" />
+                    <field name="description" />
+                    <field name="people" widget="many2many_tags" />
+                  </list>
+                </field>
+                <list>
+
+                </list>
+              </group>
+              <group>
+                <field name="hotel_comment" widget="multiline" />
+                <field name="route_sheet_comment" widget="multiline" />
+              </group>
+            </group>
+          </page>
+
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+          <group>
+            <group>
+            <field name="technicians">
+              <list string="Technicians" editable="bottom">
+                <field name="type" string="Type" />
+                <field name="name" string="Name" />
+                <field name="contact" string="Contact" />
+              </list>
+            </field>
+            </group>
+          </group>
+
         </xpath>
       </field>
     </record>

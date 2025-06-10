@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Event extended",
-    'summary': "Extiende eventos con hotel, horarios, promotor y enlace a entradas",
+    'name': "Alternatilla Hidden Camps",
+
+    'summary': "Short (1 phrase/line) summary of the module's purpose",
+
     'description': """
-        Este módulo amplía los eventos de Odoo añadiendo información adicional útil para la gestión y visualización web del evento:
-        - Hotel y comentarios de alojamiento
-        - Promotor del evento
-        - Enlace externo para la venta de entradas
-        - Mejoras para la publicación web del evento
+Long description of module's purpose
     """,
 
     'author': "Gori",
@@ -20,11 +18,11 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'event'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'views/views.xml',
     ],
     # only loaded in demonstration mode

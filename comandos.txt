@@ -1,2 +1,2 @@
 python odoo-bin --addons-path=addons,modules -d pguser -r pguser -w pguser --without-demo=all
-python odoo-bin scaffold environment modules
+python odoo-bin scaffold alternatilla_hidden_camps modules

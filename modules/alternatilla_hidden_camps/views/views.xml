@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+    <record id="view_event_form_hidden_camps" model="ir.ui.view">
+      <field name="name">event.event.form.hidden</field>
+      <field name="model">event.event</field>
+      <field name="inherit_id" ref="event.view_event_form" />
+      <field name="arch" type="xml">
+        <field name="website_menu" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="seats_limited" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="badge_format" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="badge_image" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="event_type_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="lang" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="date_tz" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+
+        <xpath expr="//page[@name='event_communication']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//page[@name='questions']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//page[@name='event_notes']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

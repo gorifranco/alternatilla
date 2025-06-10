@@ -1,7 +1,6 @@
 <odoo>
   <data>
-<!--
-    
+
         <record id="view_module_search_add_filter_by_author" model="ir.ui.view">
       <field name="name">ir.module.module.search.add.filter.autor</field>
       <field name="model">ir.module.module</field>
@@ -13,7 +12,6 @@
       </field>
     </record>
 
--->
 
 
   </data>

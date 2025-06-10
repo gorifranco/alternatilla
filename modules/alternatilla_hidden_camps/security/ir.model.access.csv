@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_alternatilla_hidden_camps_alternatilla_hidden_camps,alternatilla_hidden_camps.alternatilla_hidden_camps,model_alternatilla_hidden_camps_alternatilla_hidden_camps,base.group_user,1,1,1,1
