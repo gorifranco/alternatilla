@@ -23,7 +23,7 @@ class Technician(models.Model):
     _name = 'event.technician'
     _description = 'Technician'
     
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Name", required=True)
     contact = fields.Many2one("res.partner", string="Contact")
     type = fields.Char(string="Type")
     event_id = fields.Many2one('event.event', string="Event")
@@ -42,17 +42,18 @@ class Room(models.Model):
 class Festival(models.Model):
     _name = 'event.festival'
     _description = 'Festival'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    name = fields.Char(string="Name")
-    date_begin = fields.Date(string="Date Begin")
-    date_end = fields.Date(string="Date End")
-    presentation = fields.Html(string="Presentation")
-    is_active = fields.Boolean(string="Is Active")
-    Url_magazine = fields.Char(string="Url Magazine")
-    company_id = fields.Many2one('res.company', string="Company")
-    image = fields.Image(string="Image")
+    name = fields.Char(string="Name", required=True, tracking=True)
+    date_begin = fields.Date(string="Date Begin", tracking=True)
+    date_end = fields.Date(string="Date End", tracking=True)
+    presentation = fields.Html(string="Presentation", tracking=True)
+    is_active = fields.Boolean(string="Is Active", tracking=True)
+    Url_magazine = fields.Char(string="Url Magazine", tracking=True)
+    company_id = fields.Many2one('res.company', string="Company", tracking=True)
+    image = fields.Image(string="Image", tracking=True)
     image_256 = fields.Image(string="Image 256", max_height="256", max_width="256", related='image', store=True)
-    cover_magazine = fields.Image(string="Cover Magazine", related='image', store=True)
+    cover_magazine = fields.Image(string="Cover Magazine", related='image', store=True, tracking=True)
     cover_magazine_640 = fields.Image(string="Cover Magazine 640", max_height="640", max_width="640", related='image', store=True)
     
 

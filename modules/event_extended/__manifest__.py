@@ -20,12 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'event'],
+    'depends': ['base', 'event', 'mail'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
+        'views/festival_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

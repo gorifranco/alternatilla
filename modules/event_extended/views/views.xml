@@ -45,16 +45,19 @@
         <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
           <group>
             <group>
-            <field name="technicians">
-              <list string="Technicians" editable="bottom">
-                <field name="type" string="Type" />
-                <field name="name" string="Name" />
-                <field name="contact" string="Contact" />
-              </list>
-            </field>
+              <field name="technicians">
+                <list string="Technicians" editable="bottom">
+                  <field name="type" string="Type" />
+                  <field name="name" string="Name" />
+                  <field name="contact" string="Contact" />
+                </list>
+              </field>
             </group>
           </group>
-
+        </xpath>
+        <xpath expr="//field[@name='address_id']"
+          position="after">
+          <field name="festival_id" />
         </xpath>
       </field>
     </record>

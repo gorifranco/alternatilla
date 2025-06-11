@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_event_technician,event.technician,model_event_technician,base.group_user,1,1,1,1
 access_event_room,event.room,model_event_room,base.group_user,1,1,1,1
+access_event_festival,event.festival,model_event_festival,base.group_user,1,1,1,1
