@@ -1,10 +1,10 @@
-<template id="event_roadmap_es">
+<template id="event_roadmap_cat">
     <t t-call="web.internal_layout">
         <div class="page">
             <div class="row">
                 <div class="col-2 flex flex-column">
-                    <span style="font-weight: bold;">Concierto:</span>
-                    <t t-if="doc.x_studio_festival">
+                    <span style="font-weight: bold;">Concert:</span>
+                    <t t-if="doc.festival">
                         <br />
                         <span style="font-weight: bold;">Festival:</span>
                     </t>
@@ -12,9 +12,9 @@
                 </div>
                 <div class="col-10 flex flex-column">
                     <span t-field="doc.name" />
-                    <t t-if="doc.x_studio_festival">
+                    <t t-if="doc.festival">
                         <br />
-                        <span t-field="doc.x_studio_festival.x_name" />
+                        <span t-field="doc.festival.name" />
                     </t>
 
                 </div>
@@ -22,16 +22,17 @@
             <hr />
             <div class="row">
                 <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Fecha:</span>
+                    <span style="width: 20%; font-weight: bold;">Data:</span>
                 </div>
                 <div class="col-10">
-                    <span t-field="doc.date_begin" t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
+                    <span t-field="doc.date_begin"
+                        t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
                 </div>
             </div>
             <hr />
             <div class="row">
                 <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Ciudad:</span>
+                    <span style="width: 20%; font-weight: bold;">Ciutat:</span>
                 </div>
                 <div class="col-10">
                     <span t-field="doc.address_id.city" />
@@ -40,7 +41,7 @@
             <hr />
             <div class="row">
                 <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Espacio:</span>
+                    <span style="width: 20%; font-weight: bold;">Espai:</span>
                 </div>
                 <div class="col-10">
                     <span t-field="doc.address_id.name" />
@@ -49,9 +50,10 @@
                     <span t-if="doc.address_id.city">,</span>
                     <span t-field="doc.address_id.city" />
                     <br />
-                    <a t-att-href="'https://www.google.com/maps/search/?api=1&amp;query=' + str(doc.address_id.partner_latitude) + ',' + str(doc.address_id.partner_longitude)"
+                    <a
+                        t-att-href="'https://www.google.com/maps/search/?api=1&amp;query=' + str(doc.address_id.partner_latitude) + ',' + str(doc.address_id.partner_longitude)"
                         target="_blank">
-                        Ver en Google maps
+                        Veure a Google maps
                     </a>
                 </div>
             </div>
@@ -59,14 +61,14 @@
             <div class="row">
 
                 <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Contactos espacio:</span>
+                    <span style="width: 20%; font-weight: bold;">Contactes espai:</span>
                 </div>
 
                 <div class="col-10">
                     <t t-foreach="doc.address_id.child_ids" t-as="contact">
-                        <span t-field="contact.name" />:
-                        <span t-field="contact.email" />
-                        <span t-field="contact.phone" />
+                        <span t-field="contact.name" />: <span t-field="contact.email" />
+                        <span
+                            t-field="contact.phone" />
 
                         <br />
                     </t>
@@ -90,42 +92,42 @@
             <hr />
             <div class="row">
                 <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Organizador:</span>
+                    <span style="width: 20%; font-weight: bold;">Organitzador:</span>
                 </div>
                 <div class="col-10">
-                    <strong t-field="doc.organizer_id" /><span>:</span>
+                    <strong t-field="doc.organizer_id" />
+                    <span>:</span>
                     <t t-foreach="doc.organizer_id.child_ids" t-as="contact">
                         <br />
                         <span>* </span>
-                        <span t-field="contact.name" />:
-                        <span t-field="contact.email" />,
-                        <span t-field="contact.phone" />
+                        <span t-field="contact.name" />: <span
+                            t-field="contact.email" />, <span t-field="contact.phone" />
                     </t>
-                    <t t-if="doc.x_studio_tecnics">
+                    <t t-if="doc.technics">
                         <br />
                         <strong>Staff técnico:</strong>
-                        <t t-foreach="doc.x_studio_tecnics" t-as="tec">
+                        <t t-foreach="doc.technics" t-as="tec">
                             <br />
                             <span>* </span>
-                            <span t-out="tec.x_tipus" />
+                            <span t-out="tec.type" />
                             <span>: </span>
-                            <span t-out="tec.x_contacte.name" />
+                            <span t-out="tec.name" />
                             <span>, </span>
-                            <span t-out="tec.x_contacte.phone" />
+                            <span t-out="tec.contact.phone" />
                         </t>
                     </t>
                 </div>
             </div>
 
-            <t t-if="doc.x_studio_promotor_1">
+            <t t-if="doc.promoter_id">
                 <hr />
                 <div class="row">
                     <div class="col-2">
                         <span style="width: 20%; font-weight: bold;">Promotor:</span>
                     </div>
                     <div class="col-10">
-                        <span t-field="doc.x_studio_promotor_1" />
-                        <t t-foreach="doc.x_studio_promotor_1.child_ids" t-as="contact">
+                        <span t-field="doc.promoter_id" />
+                        <t t-foreach="doc.promoter_id.child_ids" t-as="contact">
                             <br />
                             <span>* </span>
                             <span t-field="contact.function" />
@@ -142,93 +144,99 @@
             <hr />
             <div class="row">
                 <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Contacto artista:</span>
+                    <span style="width: 20%; font-weight: bold;">Contactes artistes:</span>
                 </div>
-                <div class="col-3">
-                    Mánager
-                    <div>
-                        <span t-field="doc.x_studio_grup.x_studio_manager" />
+
+                <t t-foreach="doc.bands" t-as="band">
+                    <span t-out="band.name" />
+
+                    <div class="col-3"> Mànager <div>
+                            <span t-field="band.manager" />
+                        </div>
+                    <div
+                            t-if="not is_html_empty(band.manager.phone)">
+                            <span t-field="band.manager.phone" />
+                            <br />
+                        </div>
                     </div>
-                    <div t-if="not is_html_empty(doc.x_studio_grup.x_studio_manager.phone)">
-                        <span t-field="doc.x_studio_grup.x_studio_manager.phone" />
-                        <br />
+                    <div class="col-7">
+                        <span>Músics:</span>
+                        <t t-foreach="band.artists" t-as="artista">
+                            <br />
+                            <span>*</span>
+                            <span t-field="artista.name" />
+                            <span>: </span>
+                            <span t-field="artista.contact.phone" />
+                        </t>
                     </div>
-                    <!-- <span t-field="o.x_studio_grup.x_studio_manager.mobile"/> -->
-                </div>
-                <div class="col-7">
-                    <span>Músicos:</span>
-                    <t t-foreach="doc.x_studio_grup.x_studio_artistes" t-as="artista">
-                        <br />
-                        <span>*</span>
-                        <span t-field="artista.x_name" />
-                        <span>: </span>
-                        <span t-field="artista.x_studio_telfon" />
-                    </t>
-                </div>
+                </t>
             </div>
-            <t t-if="doc.x_studio_hotel">
+
+            <t t-if="doc.hotel_id">
                 <hr />
                 <div class="row">
                     <div class="col-2">
                         <span style="width: 20%; font-weight: bold;">Hotel:</span>
                     </div>
                     <div class="col-10">
-                        <span t-field="doc.x_studio_hotel" />
+                        <span t-field="doc.hotel_id" />
                         <br />
-                        <span t-field="doc.x_studio_hotel.street" />
-                        <span>, </span>
-                        <span t-field="doc.x_studio_hotel.city" />
+                        <span t-field="doc.hotel_id.street" />
+                        <span>
+                        , </span>
+                        <span
+                            t-field="doc.hotel_id.city" />
+                        <br /> Tel: <span
+                            t-field="doc.hotel_id.phone" />
                         <br />
-                        Tel:
-                        <span t-field="doc.x_studio_hotel.phone" />
+                        <span>
+                            Email:</span>
+                        <span t-field="doc.hotel_id.website" />
                         <br />
-                        <span>Email:</span>
-                        <span t-field="doc.x_studio_hotel.website" />
-                        <br />
-                        <span t-field="doc.x_studio_comentari_hotel" />
+                        <span
+                            t-field="doc.route_sheet_comment" />
+
+                    <t t-foreach="room_distribution"
+                            t-as="room">
+                            <span t-out="room.type" />
+                            <span>: </span>
+                            <t t-foreach="room.people" t-as="person">
+                                <span t-out="person.name" />
+                                <span>, </span>
+                            </t>
+                            <span>. </span>
+                            <span t-out="room.description" />
+                        </t>
                     </div>
                 </div>
             </t>
             <hr />
-            <!--
-                        <strong class="mb-2">Horaris:</strong>
-                        <div style="height: 3px; width: 100%"/>
 
-                        <t t-set="horarios_ordenados" t-value="doc.x_studio_horaris.sorted(key=lambda h: h.start)"/>
-                            <div class="col-12">
-                                <t t-foreach="horarios_ordenados" t-as="horari">
-                                <br/>
-                                <span style="font-weight: bold;" t-out="horari.start"/><span style="padding-right: 2px;">:</span><span t-out="horari.description"/>
-                            </t>
-                        </div>
-                        -->
-
-
-            <strong class="mb-2">Horarios:</strong>
+            <strong class="mb-2">Horaris:</strong>
             <div style="height: 3px; width: 100%" />
 
-            <t t-set="horarios_ordenados" t-value="doc.x_studio_horaris.sorted(key=lambda h: h.start)" />
+            <t t-set="sorted_schedule"
+                t-value="doc.schedule.sorted(key=lambda h: h.start)" />
+
+            <span t-field="doc.date_begin"
+                t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
+
             <t t-set="current_date" t-value="None" />
 
             <div class="col-12">
-                <t t-foreach="horarios_ordenados" t-as="horari">
+                <t t-foreach="sorted_schedule" t-as="horari">
                     <t t-if="not current_date or horari.start.date() != current_date">
                         <t t-set="current_date" t-value="horari.start.date()" />
                         <br />
-                        <span style="font-weight: bold;" t-out="current_date.strftime('%d/%m/%Y') + ':'" />
+                        <span style="font-weight: bold;"
+                            t-field="current_date"
+                            t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
                         <br />
                     </t>
-
-                    <t t-set="hora_real" t-value="(horari.start.hour + 2) % 24" />
-                    <t t-set="minuto" t-value="'%02d' % horari.start.minute" />
-
-                    <span style="font-weight: bold;" t-out="'%02d' % hora_real + ':' + minuto" />
                     <span style="padding-right: 2px;">:</span>
                     <span t-out="horari.description" />
                 </t>
             </div>
-
-
         </div>
     </t>
 </template>

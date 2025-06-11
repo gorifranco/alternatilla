@@ -16,6 +16,7 @@ class EventHotelExtension(models.Model):
     sold_out = fields.Boolean(string="Sold Out", tracking=True)
     doors_open = fields.Date(string="Doors Open", tracking=True)
     technicians = fields.One2many('event.technician', 'event_id', string="Technicians", tracking=True)
+    festival_id = fields.Many2one('event.festival', string="Festival", tracking=True)
     
 
 class Technician(models.Model):
@@ -36,4 +37,23 @@ class Room(models.Model):
     room_type = fields.Char(string="Room Type")
     people = fields.Many2many('res.partner', string="People")
     event_id = fields.Many2one('event.event', string="Event")
+    
+
+class Festival(models.Model):
+    _name = 'event.festival'
+    _description = 'Festival'
+    
+    name = fields.Char(string="Name")
+    date_begin = fields.Date(string="Date Begin")
+    date_end = fields.Date(string="Date End")
+    presentation = fields.Html(string="Presentation")
+    is_active = fields.Boolean(string="Is Active")
+    Url_magazine = fields.Char(string="Url Magazine")
+    company_id = fields.Many2one('res.company', string="Company")
+    image = fields.Image(string="Image")
+    image_256 = fields.Image(string="Image 256", max_height="256", max_width="256", related='image', store=True)
+    cover_magazine = fields.Image(string="Cover Magazine", related='image', store=True)
+    cover_magazine_640 = fields.Image(string="Cover Magazine 640", max_height="640", max_width="640", related='image', store=True)
+    
+
     
