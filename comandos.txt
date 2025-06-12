@@ -1,2 +1,2 @@
 python odoo-bin --addons-path=addons,modules -d pguser -r pguser -w pguser --without-demo=all
-python odoo-bin scaffold roadmap modules
+python odoo-bin scaffold web_fonart modules

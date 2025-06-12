@@ -1,0 +1,359 @@
+<odoo>
+  <record id="homepage_fonart_view" model="ir.ui.view">
+    <field name="name">Home</field>
+    <field name="type">qweb</field>
+    <field name="key">website.homepage</field>
+    <field name="website_id" ref="website_fonart" />
+    <field name="arch" type="xml">
+      <template id="website.homepage" name="Home">
+        <t t-call="website.layout">
+          <t t-set="pageName" t-value="'homepage'" />
+          <div id="wrap" class="oe_structure">
+
+            <t t-set="evts"
+              t-value="env['event.event'].search([    ('stage_id', '=', 3),                    ('website_published', '=', true),             ('website_id', '=', 3)         ], order='date_begin asc')" />
+
+            <t t-if="len(evts) &gt; 0">
+              <section class="s_text_block o_colored_level pt-5" data-snippet="s_text_block"
+                data-name="Text">
+                <div class="s_allow_columns container">
+                  <p style="text-align: center;">
+                    <a href="/event" class="btn btn-primary">
+                      <span class="h4-fs">
+                        <strong>Pròxims Esdeveniments: </strong>
+                      </span>
+                    </a>
+                  </p>
+                </div>
+              </section>
+
+              <section class="position-relative">
+
+                <div class="o_we_shape o_web_editor_Origins_02_001"
+                  style="position: absolute; top: 0px; width: 100%; height: 100%; z-index: -1; background-image: url(&quot;/web_editor/shape/web_editor%2FOrigins%2F02_001.svg?c4=%23157F7A&amp;c5=o-color-4&quot;);">
+                </div>
+                <section class="s_carousel_intro_wrapper p-0" data-snippet="s_carousel_intro"
+                  data-name="Carousel Intro"
+                  data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Wavy/11&quot;,&quot;flip&quot;:[&quot;x&quot;]}">
+                  <div class="s_carousel_intro s_carousel_default carousel slide o_colored_level"
+                    data-bs-ride="true"
+                    t-att-data-bs-interval="len(evts) &gt; 1 and '5000' or 'false'"
+                    id="myCarousel1744094337588">
+
+                    <div class="carousel-inner p-0">
+                      <t t-foreach="evts" t-as="evt">
+                        <div
+                          t-attf-class="s_carousel_intro_item carousel-item px-0 py-4 my-5 pt-0 pt-lg-4 #{evt_index == 0 and 'active' or ''}"
+                          data-name="Slide">
+                          <div class="container">
+                            <div class="row align-items-center">
+
+                              <div class="col-lg-6 d-flex flex-column ps-0 ps-lg-5 pt-lg-3 pt-0">
+                                <div class="ps-lg-5">
+                                  <div class="ps-lg-5">
+                                    <h1 class="display-6 mb-4 text-center align-content-center"
+                                      t-field="evt.name" />
+
+                                    <div
+                                      class="mb-3 pl-3 w-100 m-auto justify-content-center d-flex">
+                                      <span t-field="evt.address_id"
+                                        t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;street&quot;, &quot;city&quot;, &quot;name&quot;]}" />
+                                    </div>
+
+                                    <div
+                                      class="mb-3 pl-3 w-100 m-auto justify-content-center d-flex">
+                                      <i class="fa fa-calendar p-1" />
+                                      <span t-field="evt.date_begin"
+                                        t-options="{&quot;widget&quot;: &quot;datetime&quot;, &quot;format&quot;: &quot;medium&quot;}" />
+                                    </div>
+
+                                    <div
+                                      class="mb-3 pl-3 w-100 m-auto justify-content-center d-flex">
+                                      <a class="btn btn-primary event-link"
+                                        t-att-href="event.website_url">Anar a l'esdeveniment</a>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="col-lg-6 d-flex align-items-center justify-content-center"
+                                style="max-height: 400px; margin: auto;">
+                                <img t-if="evt.x_avatar_image"
+                                  t-att-src="'data:image/png;base64,%s' % evt.x_avatar_image.decode('utf-8')"
+                                  class="img-fluid p-3"
+                                  style="max-height: 350px; width: auto; object-fit: contain; background-color: white"
+                                  alt="Imagen del evento" loading="lazy" />
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </t>
+                    </div>
+                    <t t-if="len(evts) &gt; 1">
+                      <div
+                        class="container position-absolute start-50 bottom-0 translate-middle-x o_not_editable">
+                        <div
+                          class="row gap-3 gap-lg-5 justify-content-between flex-nowrap flex-row-reverse">
+
+
+                          <div class="d-flex w-auto p-0">
+                            <button
+                              class="carousel-control-prev o_not_editable o_we_no_overlay bg-mobile-lightgray custom-carousel-icon"
+                              aria-label="Anterior" title="Anterior"
+                              data-bs-target="#myCarousel1744094337588" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true" />
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button
+                              class="carousel-control-next o_not_editable o_we_no_overlay bg-mobile-lightgray custom-carousel-icon"
+                              aria-label="Següent" title="Següent"
+                              data-bs-target="#myCarousel1744094337588" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true" />
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+
+                          <!--
+                            <div class="align-items-center flex-shrink-1 w-auto o_we_no_overlay d-none">
+                                <t t-foreach="evts" t-as="evt">
+                                    <button type="button" aria-label="Carousel indicator" data-bs-target="#myCarousel1744094337588"
+                      t-att-data-bs-slide-to="evt_index" t-att-class="{'nav-link active': evt_index
+                      == 0, 'nav-link': evt_index != 0}" t-att-aria-current="'true' if evt_index ==
+                      0 else 'false'"/>
+                                </t>
+                            </div>
+                            -->
+                        </div>
+                      </div>
+                    </t>
+                  </div>
+                </section>
+              </section>
+            </t>
+
+            <section class="s_framed_intro o_colored_level o_cc o_cc4 pt0 pb40"
+              data-snippet="s_framed_intro" data-name="Framed Intro">
+              <div class="container">
+                <div class="row o_grid_mode" data-row-count="11">
+
+                  <div class="o_grid_item o_colored_level col-lg-5"
+                    style="grid-area: 2 / 8 / 12 / 13; overflow: hidden;">
+                    <img src="/web/image/3121-014770dd/Antonia-Font-en-Pollenca-SonsDeNit-13.webp"
+                      alt="" class="img-fluid w-100 h-auto img o_we_custom_image"
+                      style="object-fit: cover; object-position: center center; margin-top: 60px;"
+                      data-mimetype="image/webp" data-original-id="3120"
+                      data-original-src="/web/image/3120-1a56dea1/Antonia-Font-en-Pollenca-SonsDeNit-13.jpg"
+                      data-mimetype-before-conversion="image/jpeg" data-resize-width="NaN"
+                      loading="lazy" />
+                  </div>
+
+                  <div class="o_grid_item g-col-lg-6 o_colored_level g-height-2 col-lg-6"
+                    style="z-index: 1; grid-area: 3 / 1 / 5 / 7;">
+                    <h1 class="display-4">&amp;nbsp;QUI SOM?<br /></h1>
+                  </div>
+                  <div
+                    class="o_grid_item g-col-lg-6 align-content-end o_colored_level g-height-6 col-lg-6"
+                    style="z-index: 2; grid-area: 5 / 1 / 11 / 7;">
+                    <p>Som FONART</p>
+                    <p>Vàrem néixer a Mallorca, però treballam sense fronteres: ni físiques ni
+                      creatives. Som un equip petit, divers i apassionat, format per dones i homes
+                      que
+                      creim en el poder de la cultura per emocionar, transformar i connectar.</p>
+                    <p style="margin-bottom: 0px;">Ens agrada fer les coses amb cura, amb estima,
+                      amb
+                      consciència. | creim en l'art com a espai de trobada, com a forma de diàleg
+                      amb el
+                      món.</p>
+                    <p style="margin-bottom: 0px;">
+                      <br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="s_text_image o_cc o_cc1 o_colored_level pb40 pt56"
+              data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Origins/02_001&quot;,&quot;colors&quot;:{&quot;c4&quot;:&quot;#157F7A&quot;,&quot;c5&quot;:&quot;o-color-4&quot;},&quot;flip&quot;:[],&quot;showOnMobile&quot;:false,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;}"
+              data-snippet="s_image_text" data-name="Text - Imatge" style="position: relative;">
+              <div class="o_we_shape o_web_editor_Origins_02_001"
+                style="background-image: url(&quot;/web_editor/shape/web_editor%2FOrigins%2F02_001.svg?c4=%23157F7A&amp;c5=o-color-4&quot;);" />
+
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="pt16 pb16 o_colored_level col-lg-5">
+                    <img src="/web/image/2813-e8c9f5cd/objetivos-desarrollo-sostenible.webp" alt=""
+                      class="img img-fluid mx-auto rounded o_we_custom_image"
+                      data-mimetype="image/webp"
+                      data-original-id="2812"
+                      data-original-src="/web/image/2812-fb7d1a7f/objetivos-desarrollo-sostenible.png"
+                      data-mimetype-before-conversion="image/png" data-resize-width="NaN"
+                      loading="lazy" />
+                  </div>
+                  <div class="col-lg-5 pt16 pb16 offset-lg-2 o_colored_level o_cc o_cc1">
+                    <h2 class="h3-fs">
+                      <span class="o_text_highlight o_translate_inline o_text_highlight_underline"
+                        style="--text-highlight-width: 3px; --text-highlight-color: var(--o-color-1);">CULTURA
+                        SOSTENIBLE</span>
+                      <br />
+                    </h2>
+                    <p>
+                      <br />
+                    </p>
+                    <p> Com a entitat adherida al Pacte Mundial de l’ONU, en&amp;nbsp;<strong>Fonart</strong>&amp;nbsp;ens
+                      comprometem a complir amb les responsabilitats fonamentals en matèria de drets
+                      humans, treball, medi ambient i lluita contra la corrupció, alineant les
+                      nostres operacions amb els Deu Principis universalment acceptats, i treballant
+                      a favor dels&amp;nbsp;<strong>Objectius de Desenvolupament Sostenible</strong>
+                      &amp;nbsp;(ODS). </p>
+                    <p>
+                      <a class="btn btn-primary"
+                        href="https://www.un.org/sustainabledevelopment/es/sustainable-development-goals/"
+                        target="_blank">Veure més</a>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="s_text_image o_colored_level o_cc o_cc4 pt40 pb80"
+              data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Wavy/11&quot;,&quot;flip&quot;:[&quot;x&quot;]}"
+              data-snippet="s_text_image" data-name="Text - Imatge">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="pt16 pb16 col-lg-6 o_colored_level">
+                    <h2 class="h3-fs">
+                      <span class="o_text_highlight o_translate_inline o_text_highlight_underline"
+                        style="--text-highlight-width: 3px; --text-highlight-color: var(--o-color-1);">
+                        SONSDENIT</span>
+                    </h2>
+
+                    <p>És un viatge sonor que <strong>transforma espais amb història en escenaris
+                      vibrants,</strong> on la cultura passa i es viu. Des d'edificis històrics
+                      -claustres, patis, convents, castells, esglésies...- fins a paisatges naturals
+                      de gran bellesa, portem la música en viu a espais que multipliquen
+                      l'experiència. I ho fem amb <strong>grans artistes</strong>. Creim que <strong>la
+                      cultura no només
+                        es mira i
+                        s'escolta</strong>: també <strong>es pensa, es debat i ens
+                        transforma</strong>. Per això, a més dels concerts, organitzem els Vermuts
+                      Activistes: xerrades, trobades i jornades professionals en un ambient distès,
+                      on es comparteix tant com s'aprèn. Creiem en <strong>la força del col-lectiu,</strong>
+                      en <strong>el
+                        poder
+                        de les aliances</strong> - les bones idees arrelen millor en bona companyia.</p>
+                    <p>
+                      <a class="btn btn-primary" href="/sdn">Veure més</a>
+                    </p>
+
+                    <p />
+                  </div>
+                  <div class="pt16 o_colored_level col-lg-5 offset-lg-1 pb24"
+                    style="background-color: rgba(255, 255, 255, 0);">
+                    <img
+                      src="/web/image/3123-f7a5fad4/Claustre-de-Sant-Bonaventura-Llucmajor-SonsDeNit.webp"
+                      alt="" class="img img-fluid mx-auto o_we_custom_image rounded"
+                      data-mimetype="image/webp" data-original-id="2831"
+                      data-original-src="/web/image/2831-3d6a472e/Claustre-de-Sant-Bonaventura-Llucmajor-SonsDeNit.jpg"
+                      data-mimetype-before-conversion="image/jpeg" data-resize-width="NaN"
+                      style="width: 100% !important;" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="s_text_image o_cc o_cc1 pb64 o_colored_level pt16"
+              style="position: relative;"
+              data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Bold/01&quot;,&quot;colors&quot;:{&quot;c2&quot;:&quot;#157F7A&quot;},&quot;flip&quot;:[],&quot;showOnMobile&quot;:true,&quot;shapeAnimationSpeed&quot;:&quot;0&quot;}">
+              <div class="o_we_shape o_web_editor_Bold_01"
+                style="background-image: url(&quot;/web_editor/shape/web_editor%2FBold%2F01.svg?c2=%23157F7A&quot;);" />
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="pt16 pb16 col-lg-4">
+                    <img src="/web/image/3122-e8fd10b1/yann-tiersen_fona_fall-fest.jpg" alt=""
+                      class="img img-fluid mx-auto rounded o_we_custom_image"
+                      data-mimetype="image/jpeg"
+                      data-original-id="3122"
+                      data-original-src="/web/image/3122-e8fd10b1/yann-tiersen_fona_fall-fest.jpg"
+                      data-mimetype-before-conversion="image/jpeg" loading="lazy" />
+                  </div>
+                  <div class="col-lg-5 offset-lg-2 o_colored_level pt0 pb0">
+                    <h2 class="h3-fs">
+                      <span class="o_text_highlight o_translate_inline o_text_highlight_underline"
+                        style="--text-highlight-width: 3px; --text-highlight-color: var(--o-color-1);">
+                        <font class="text-o-color-4 text-mobile-black">FONA FALL FEST</font>
+                      </span>
+                      <br />
+                    </h2>
+                    <p>
+                      <font class="text-o-color-4">
+</font>
+                      <font class="text-white text-mobile-black"><strong>Fona Fall Fest</strong>&amp;nbsp;és
+                        un festival de les Illes, ideat, promogut i organitzat per Fonart durant els
+                        mesos de tardor, amb les premisses de qualitat, actualitat i avantguarda. És
+                        un festival itinerant, allunyant-se del model centralitzat en les grans
+                        ciutats. </font>
+                      <br />
+
+                    </p>
+                    <br />
+                    <p>
+                      <a href="/fff" class="btn btn-secondary">Veure més</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="s_text_image pb64 o_colored_level o_cc o_cc4 pt0"
+              data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Wavy/11&quot;,&quot;flip&quot;:[&quot;x&quot;]}"
+              data-snippet="s_text_image" data-name="Text - Imatge"
+              style="position: relative; background-color: rgb(255, 255, 255);">
+              <div class="container">
+                <div class="row align-items-center ">
+                  <div class="pb16 col-lg-6 o_colored_level pt0">
+                    <h3>FONART CLUB</h3>
+                    <p>
+                      <font class="text-black">Si vols ser el primer a assabentar-te dels nostres
+                        concerts i de tota la nostra programació cultural – xerrades, exposicions,
+                        llibres…-, a més de tenir descompte en la compra d’entrades de concerts i
+                        altres
+                        grans avantatges. En definitiva, si vols formar part de la nostra família de
+                        fanàtics de la música i l’art en general, t’obrim les portes de Fonart Club.</font>
+                    </p>
+                    <p>
+                      <font class="text-black">​</font>
+                    </p>
+                    <p>
+                      <a class="btn btn-primary" href="/fonart-club">Més informació</a>
+                    </p>
+                    <p>
+
+                    </p>
+                    <p />
+                    <p />
+                  </div>
+                  <div class="pb16 col-lg-4 offset-lg-2 o_colored_level o_cc o_cc1 pt0">
+                    <img src="/web/image/2853-11d52af1/brand_square.svg" alt=""
+                      class="img img-fluid mx-auto o_we_custom_image" data-mimetype="image/svg+xml"
+                      data-original-id="2853"
+                      data-original-src="/web/image/2853-11d52af1/brand_square.svg"
+                      data-mimetype-before-conversion="image/svg+xml" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </t>
+
+      </template>
+    </field>
+  </record>
+
+  <record id="homepage_fonart_page" model="website.page">
+    <field name="name">Fonart Home</field>
+    <field name="url">/</field>
+    <field name="view_id" ref="homepage_fonart_view" />
+    <field name="website_id" ref="website_fonart" />
+  </record>
+
+</odoo>

@@ -1,0 +1,7 @@
+<odoo>
+  <data>
+  <record id="website_fonart" model="website">
+    <field name="name">Fonart</field>
+  </record>
+  </data>
+</odoo>
