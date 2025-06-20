@@ -56,7 +56,7 @@ class WebsiteEventController(http.Controller):
         SudoEventType = request.env['event.type'].sudo()
 
         searches.setdefault('search', '')
-        searches.setdefault('date', 'upcoming')
+        searches.setdefault('date', 'all')
         searches.setdefault('tags', '')
         searches.setdefault('type', 'all')
         searches.setdefault('country', 'all')

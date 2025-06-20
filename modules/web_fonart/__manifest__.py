@@ -24,7 +24,7 @@ Long description of module's purpose
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
+        'views/events_list.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

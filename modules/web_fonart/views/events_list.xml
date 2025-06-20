@@ -1,0 +1,17 @@
+<odoo>
+  <record id="website_event.events_list" model="ir.ui.view">
+    <field name="name">Events list Fonart</field>
+   <!-- <field name="model">website.event</field> -->
+    <field name="key">website_event.events_list</field>
+    <field name="mode">primary</field>
+    <field name="type">qweb</field>
+    <field name="priority">16</field>
+    <field name="website_id" ref="website_fonart"/>
+    <field name="arch" type="xml">
+        <div>
+          Events list nova
+
+        </div>
+    </field>
+  </record>
+</odoo>
