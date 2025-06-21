@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_event_view_event_view,event_view.event_view,model_event_view_event_view,base.group_user,1,1,1,1
+access_event_video,event.video,model_event_video,base.group_user,1,1,1,1
+access_event_video_public,event.video,model_event_video,base.group_public,1,0,0,0

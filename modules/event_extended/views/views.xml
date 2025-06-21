@@ -61,5 +61,16 @@
         </xpath>
       </field>
     </record>
+
+      <record id="view_event_form_custom_website" model="ir.ui.view">
+      <field name="name">event.event.form.custom.website</field>
+      <field name="model">event.event</field>
+      <field name="inherit_id" ref="website_event.event_event_view_form" />
+      <field name="arch" type="xml">
+    <xpath expr="//field[@name='website_published']" position="attributes">
+      <attribute name="invisible">0</attribute>
+    </xpath>
+      </field>
+    </record>
   </data>
 </odoo>

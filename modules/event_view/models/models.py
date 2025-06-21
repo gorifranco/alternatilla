@@ -11,7 +11,7 @@ class EventViewExtension(models.Model):
     cover_image_256 = fields.Image("Image 256px", related="cover_image", max_width=256, max_height=256, store=True)
     
     web_images = fields.Many2many('m2m_images', string="Web Images")
-    videos = fields.One2many('website.video', 'event_id', string="Videos")
+    videos = fields.One2many('event.video', 'event_id', string="Videos")
     main_text = fields.Html(string="Main Text", translate=True)
     side_images = fields.Many2many(
         'm2m_images', 
@@ -52,15 +52,7 @@ class EventViewExtension(models.Model):
     
     
 class EventVideos(models.Model):
-    _name = "website.video"
-    _description = "Videos"
-    
-    url = fields.Char(string="Video URL", required=True)
-    event_id = fields.Many2one('event.event', string="Related Event")
-    
-    
-class EventVideos(models.Model):
-    _name = "website.video"
+    _name = "event.video"
     _description = "Videos"
     
     url = fields.Char(string="Video", required=True)

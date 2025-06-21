@@ -1,0 +1,127 @@
+<odoo>
+    <template id="event_card" name="Event_card" priority="20" website_id="website_fonart">
+        <t t-name="website.event_card">
+
+            <t t-set="entrades" t-value="entrades or False" />
+            <t t-set="festival" t-value="festival or False" />
+
+            <t t-set="url"
+                t-value="url or '/event/%s/%s' % (slug(event), (not event.menu_id) and 'register' or '')" />
+            <t t-set="current_date" t-value="datetime.datetime.now()" />
+
+            <a t-cache="event if not editable and event.website_published else None"
+                t-att-href="url" t-att-data-name="event.name" t-att-data-date="event.date_begin"
+                class="event-item text-decoration-none text-reset "
+                t-att-data-publish="event.website_published and 'on' or 'off'">
+                <article class="h-100 o_website_record card" itemscope="itemscope"
+                    itemtype="http://schema.org/Event">
+                    <div class="h-100 d-flex flex-column">
+                        <!-- Header -->
+                        <header
+                            class="card-header overflow-hidden bg-secondary p-0 border-0 rounded-0">
+                            <!-- Image + Link -->
+                            <div class="d-block h-100 w-100">
+                                <t t-call="website.record_cover">
+                                    <t t-set="_record" t-value="event" />
+                                    <t t-set="_bg" t-value="event.cover_image_256" />
+                                    <meta itemprop="startDate"
+                                        t-att-content="event.date_begin.isoformat()" />
+                                </t>
+                            </div>
+                        </header>
+
+                        <!-- Body -->
+                        <main
+                            class="card-body position-relative d-flex flex-column justify-content-between gap-2 col-12 py-3">
+                            <div id="event_details">
+
+                                <!-- Title -->
+                                <h5
+                                    t-attf-class="card-title my-2 #{(not event.website_published) and 'text-danger'}">
+                                    <span t-field="event.name" itemprop="name" />
+                                </h5>
+                                <!-- Start Date & Time -->
+                                <!-- TODO remove t-out one in master -->
+                                <small t-if="False" class="o_not_editable opacity-75"
+                                    itemprop="description" t-out="event.subtitle">
+                                </small>
+                                <small class="opacity-75" itemprop="description"
+                                    t-field="event.subtitle" />
+                            </div>
+                            <!-- Location -->
+
+                            <div class="d-flex flex-column justify-content-between gap-1">
+                                <small class="o_not_editable fw-bold" itemprop="location"
+                                    t-out="event.address_id"
+                                    t-options="{'widget': 'contact', 'fields': ['city', 'country_id'], 'null_text': 'Online event'}" />
+                                <small class="o_not_editable fw-bold" itemprop="time">
+                                    <div class="d-flex align-items-baseline gap-1">
+                                        <i class="fa fa-clock-o"
+                                            style="margin-left: 3px; margin-right: 3px;"
+                                            aria-hidden="true" />
+                                        <span t-out="event.date_begin"
+                                            t-options="{&quot;widget&quot;: &quot;date&quot;,&quot;format&quot;: &quot;dd-MM-yyyy&quot;}" />
+                                    </div>
+                                </small>
+                                <t t-if="festival and event.festival_id">
+                                    <small class="o_not_editable fw-bold" itemprop="time">
+                                        <div class="d-flex align-items-baseline gap-1">
+                                            <i class="fa fa-headphones"
+                                                style="margin-left: 3px; margin-right: 3px;"
+                                                aria-hidden="true" />
+                                            <span t-out="event.festival_id.name" />
+                                        </div>
+                                    </small>
+                                </t>
+                            </div>
+                            <t t-if="entrades">
+                                <t t-if="event.date_begin.date() &gt; current_date.date()">
+                                    <!-- Botó venta d'entrades -->
+                                    <div
+                                        t-if="event.date_begin and current_date and event.date_begin.date() &lt; current_date.date()"
+                                        class="mt-auto pt-2 mx-auto w-75 mb-4">
+                                        <p class="w-100 mb-0 py-2 btn btn-outline-primary">
+                                            Event finished
+                                        </p>
+                                    </div>
+
+                                    <div t-elif="event.sold_out"
+                                        class="mt-auto pt-2 mx-auto w-75 mb-3">
+                                        <p
+                                            class="w-100 mb-0 py-2 text-center border border-danger rounded text-danger">
+                                            Sold out
+                                        </p>
+                                    </div>
+
+                                    <a t-elif="event.ticket_link"
+                                        t-att-href="event.ticket_link" target="_blank">
+                                        <div class="mt-auto pt-2 mx-auto w-75 mb-3">
+                                            <p class="btn btn-primary w-100 mb-0 py-2">
+                                                Tickets
+                                            </p>
+                                        </div>
+                                    </a>
+
+                                    <div t-elif="event.free_entry"
+                                        class="mt-auto pt-2 mx-auto w-75 mb-3">
+                                        <p
+                                            class="w-100 mb-0 py-2 text-center border border-primary rounded text-primary">
+                                            Free entry
+                                        </p>
+                                    </div>
+
+                                    <div t-else="" class="mt-auto pt-2 mx-auto w-75 mb-3">
+                                        <p
+                                            class="w-100 mb-0 py-2 text-center border border-primary rounded text-primary">
+                                            Comming soon
+                                        </p>
+                                    </div>
+                                </t>
+                            </t>
+                        </main>
+                    </div>
+                </article>
+            </a>
+        </t>
+    </template>
+</odoo>

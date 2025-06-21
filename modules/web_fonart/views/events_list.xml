@@ -1,17 +1,129 @@
 <odoo>
   <record id="website_event.events_list" model="ir.ui.view">
     <field name="name">Events list Fonart</field>
-   <!-- <field name="model">website.event</field> -->
+    <!-- <field name="model">website.event</field> -->
     <field name="key">website_event.events_list</field>
     <field name="mode">primary</field>
     <field name="type">qweb</field>
     <field name="priority">16</field>
-    <field name="website_id" ref="website_fonart"/>
+    <field name="website_id" ref="website_fonart" />
     <field name="arch" type="xml">
-        <div>
-          Events list nova
 
+      <!-- Options -->
+      <t t-set="opt_index_sidebar" t-value="is_view_active('website_event.opt_index_sidebar')" />
+      <t t-set="opt_events_event_location" t-value="is_view_active('website_event.event_location')" />
+
+      <t t-set="events_per_row" t-value="4" /> <!-- Eventos por fila -->
+      <t t-set="max_rows" t-value="5" /> <!-- Máximo de filas a mostrar -->
+
+
+      <t t-if="opt_events_list_columns" t-set="opt_event_size"
+        t-value="opt_index_sidebar and 'col-md-6' or 'col-md-6 col-lg-4 col-xl-3'" />
+      <t t-else="" t-set="opt_event_size" t-value="opt_index_sidebar and 'col-12' or 'col-xl-12'" />
+
+      <!-- Fuzzy search -->
+      <div t-if="event_ids and original_search" class="col-12 alert alert-warning mt8"> No s'han
+        trobat resultats per a '<span t-out="original_search" />'. Mostrant els resultats per'<span
+          t-out="searches['search']" />'. </div>
+
+      <!-- List -->
+      <div
+        class="o_wevent_index_topbar_filters d-flex d-print-none align-items-center justify-content-end flex-wrap gap-2 w-100 pt-5">
+
+        <h2 t-if="searches.get('search')" class="h4 my-0 me-auto pe-sm-4">
+          <span>Resultats per: "</span>
+          <span t-esc="searches.get('search')" />
+          <span>"</span>
+          <t t-if="len(event_ids) &gt; 0">
+            <small class="text-muted">(Trobats: <t t-esc="len(event_ids)" />)</small>
+          </t>
+        </h2>
+        <h2 t-elif="incoming_events" class="h4 my-0 me-auto pe-sm-4">Pròxims esdeveniments</h2>
+        <h2 t-else="" class="h4 my-0 me-auto pe-sm-4">Esdeveniments passats</h2>
+        <div class="o_wevent_search d-flex w-100">
+          <div class="w-100 flex-grow-1">
+            <t t-call="website.website_search_box_input">
+              <t t-set="_classes" t-valuef="o_wevent_event_searchbar_form flex-grow-1" />
+              <t t-set="search_type">events</t>
+              <t t-set="action" t-value="'/event/'" />
+              <t t-set="display_description" t-valuef="true" />
+              <t t-set="display_detail" t-valuef="false" />
+              <t t-set="search" t-value="search or searches and searches['search']" />
+              <t t-set="placeholder">Search an event..</t>
+              <t t-foreach="searches" t-as="item">
+                <input t-if="item != 'search' and item_value != 'all'" type="hidden"
+                  t-att-name="item" t-att-value="item_value" />
+              </t>
+            </t>
+          </div>
+          <button class="btn btn-light position-relative ms-2 d-lg-none" data-bs-toggle="offcanvas"
+            data-bs-target="#o_wevent_index_offcanvas">
+            <i class="fa fa-sliders" />
+          </button>
         </div>
+      </div>
+
+      <t t-if="not search_active">
+
+        <div class="row g-4 g-lg-3 g-xxl-4">
+          <div t-foreach="incoming_events" t-as="event" t-attf-class=" #{opt_event_size}">
+            <t t-call="web_fonart.event_card">
+              <t t-set="event" t-value="event" />
+              <t t-set="entrades" t-value="True" />
+              <t t-set="festival" t-value="True" />
+            </t>
+          </div>
+        </div>
+
+
+        <div t-if="event_ids and incoming_events"
+          class="o_wevent_index_topbar_filters d-flex d-print-none align-items-center justify-content-end flex-wrap gap-2 w-100">
+          <h2 class="h4 my-0 me-auto pe-sm-4">Esdeveniments passats</h2>
+        </div>
+
+      </t>
+
+      <div class="row g-4 g-lg-3 g-xxl-4">
+        <div t-foreach="event_ids" t-as="event" t-attf-class=" #{opt_event_size}">
+          <t t-call="web_fonart.event_card">
+            <t t-set="event" t-value="event" />
+            <t t-set="entrades" t-value="True" />
+            <t t-set="festival" t-value="True" />
+          </t>
+        </div>
+      </div>
+
+      <!--
+    No events
+        
+    <div t-if="not event_ids" class="col-12 text-center">
+        <div t-call="website_event.event_empty_events_svg" class="my-4"/>
+        <h3 class="">No hi ha esdeveniments planificats</h3>
+    </div>
+    -->
+
+      <!-- Pager -->
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <t t-call="website.pager">
+            <t t-set="pager" t-value="pager" />
+          </t>
+        </div>
+      </div>
+
     </field>
   </record>
+
+<record id="fonart_remove_search_bar" model="ir.ui.view">
+    <field name="name">Fonart - Remove Event Search Bar</field>
+    <field name="model">website.event</field>
+    <field name="inherit_id" ref="website_event.index" />
+    <field name="priority">99</field>
+    <field name="website_id" ref="website_fonart"/>
+    <field name="arch" type="xml">
+      <xpath expr="//t[@t-call='website_event.index_topbar']" position="replace">
+          <!-- Eliminado -->
+      </xpath>
+    </field>
+</record>
 </odoo>

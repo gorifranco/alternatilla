@@ -18,13 +18,14 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'website', 'event', 'website_event'],
+    'depends': ['base', 'website', 'event', 'website_event', 'Event extended', 'Event View'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/events_list.xml',
+        'views/event_card.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

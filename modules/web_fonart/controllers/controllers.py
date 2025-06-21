@@ -206,3 +206,7 @@ class CustomWebsiteController(http.Controller):
         }
 
         return request.render("website_event.index", values)
+    
+# Event card
+
+    
