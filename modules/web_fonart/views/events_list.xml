@@ -65,7 +65,7 @@
 
       <t t-if="not search_active">
 
-        <div class="row g-4 g-lg-3 g-xxl-4">
+        <div class="row g-4 g-lg-3 g-xxl-4 mt-5">
           <div t-foreach="incoming_events" t-as="event" t-attf-class=" #{opt_event_size}">
             <t t-call="web_fonart.event_card">
               <t t-set="event" t-value="event" />
@@ -77,7 +77,7 @@
 
 
         <div t-if="event_ids and incoming_events"
-          class="o_wevent_index_topbar_filters d-flex d-print-none align-items-center justify-content-end flex-wrap gap-2 w-100">
+          class="o_wevent_index_topbar_filters d-flex d-print-none align-items-center justify-content-end flex-wrap gap-2 w-100 pb-5">
           <h2 class="h4 my-0 me-auto pe-sm-4">Esdeveniments passats</h2>
         </div>
 
@@ -93,15 +93,6 @@
         </div>
       </div>
 
-      <!--
-    No events
-        
-    <div t-if="not event_ids" class="col-12 text-center">
-        <div t-call="website_event.event_empty_events_svg" class="my-4"/>
-        <h3 class="">No hi ha esdeveniments planificats</h3>
-    </div>
-    -->
-
       <!-- Pager -->
       <div class="row mt-4">
         <div class="col-12 text-center">
@@ -114,16 +105,16 @@
     </field>
   </record>
 
-<record id="fonart_remove_search_bar" model="ir.ui.view">
+  <record id="fonart_remove_search_bar" model="ir.ui.view">
     <field name="name">Fonart - Remove Event Search Bar</field>
     <field name="model">website.event</field>
     <field name="inherit_id" ref="website_event.index" />
     <field name="priority">99</field>
-    <field name="website_id" ref="website_fonart"/>
+    <field name="website_id" ref="website_fonart" />
     <field name="arch" type="xml">
       <xpath expr="//t[@t-call='website_event.index_topbar']" position="replace">
-          <!-- Eliminado -->
+        <!-- Eliminado -->
       </xpath>
     </field>
-</record>
+  </record>
 </odoo>

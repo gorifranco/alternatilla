@@ -18,7 +18,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'event', 'm2m_images', 'website_event'],
+    'depends': ['base', 'event', 'm2m_images', 'website_event', 'web'],
 
     # always loaded
     'data': [
@@ -29,5 +29,17 @@
     'demo': [
         'demo/demo.xml',
     ],
+    
+    
+    # 'assets': {
+    #     'web.assets_backend': [
+    #         'event_view/static/src/cropper_widget/cropper_widget.js',
+    #         'event_view/static/src/cropper_widget/cropper_widget.xml',
+    #         'event_view/static/src/lib/cropper.min.css',
+    #         'event_view/static/src/lib/cropper.min.js',
+
+    #     ],
+        
+    # },
 }
 

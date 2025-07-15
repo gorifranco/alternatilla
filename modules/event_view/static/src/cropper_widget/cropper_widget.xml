@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="cropper_templates" xml:space="preserve">
+    <t t-name="event_view.CropperField">
+        <div class="o_cropper_widget">
+            <img t-ref="img"
+                 class="img-fluid oe_avatar"
+                 t-att-src="props.value ? 'data:image/png;base64,' + props.value
+                                        : '/web/static/img/placeholder.png'"/>
+            <input type="file"
+                   t-if="!props.readonly"
+                   t-ref="fileInput"
+                   class="d-none"
+                   t-on-change="onFileChange"/>
+        </div>
+    </t>
+</templates>

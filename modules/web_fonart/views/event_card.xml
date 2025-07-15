@@ -40,13 +40,6 @@
                                     t-attf-class="card-title my-2 #{(not event.website_published) and 'text-danger'}">
                                     <span t-field="event.name" itemprop="name" />
                                 </h5>
-                                <!-- Start Date & Time -->
-                                <!-- TODO remove t-out one in master -->
-                                <small t-if="False" class="o_not_editable opacity-75"
-                                    itemprop="description" t-out="event.subtitle">
-                                </small>
-                                <small class="opacity-75" itemprop="description"
-                                    t-field="event.subtitle" />
                             </div>
                             <!-- Location -->
 
@@ -74,18 +67,14 @@
                                     </small>
                                 </t>
                             </div>
-                            <t t-if="entrades">
-                                <t t-if="event.date_begin.date() &gt; current_date.date()">
-                                    <!-- Botó venta d'entrades -->
-                                    <div
-                                        t-if="event.date_begin and current_date and event.date_begin.date() &lt; current_date.date()"
-                                        class="mt-auto pt-2 mx-auto w-75 mb-4">
-                                        <p class="w-100 mb-0 py-2 btn btn-outline-primary">
-                                            Event finished
-                                        </p>
-                                    </div>
+                            <t t-if="entrades and event.date_begin">
+                                <t t-set="event_date" t-value="event.date_begin.date()" />
+                                <t t-set="today" t-value="current_date.date()" />
 
-                                    <div t-elif="event.sold_out"
+                                <!-- Evento futuro o presente -->
+                                <t t-if="event_date &gt;= today">
+                                    <!-- Sold out -->
+                                    <div t-if="event.sold_out"
                                         class="mt-auto pt-2 mx-auto w-75 mb-3">
                                         <p
                                             class="w-100 mb-0 py-2 text-center border border-danger rounded text-danger">
@@ -93,15 +82,15 @@
                                         </p>
                                     </div>
 
-                                    <a t-elif="event.ticket_link"
-                                        t-att-href="event.ticket_link" target="_blank">
+                                    <!-- Con enlace a tickets -->
+                                    <a t-elif="event.ticket_link" t-att-href="event.ticket_link"
+                                        target="_blank">
                                         <div class="mt-auto pt-2 mx-auto w-75 mb-3">
-                                            <p class="btn btn-primary w-100 mb-0 py-2">
-                                                Tickets
-                                            </p>
+                                            <p class="btn btn-primary w-100 mb-0 py-2">Tickets</p>
                                         </div>
                                     </a>
 
+                                    <!-- Entrada gratuita -->
                                     <div t-elif="event.free_entry"
                                         class="mt-auto pt-2 mx-auto w-75 mb-3">
                                         <p
@@ -110,10 +99,20 @@
                                         </p>
                                     </div>
 
+                                    <!-- Próximamente -->
                                     <div t-else="" class="mt-auto pt-2 mx-auto w-75 mb-3">
                                         <p
                                             class="w-100 mb-0 py-2 text-center border border-primary rounded text-primary">
-                                            Comming soon
+                                            Coming soon
+                                        </p>
+                                    </div>
+                                </t>
+
+                                <!-- Evento pasado -->
+                                <t t-else="">
+                                    <div class="mt-auto pt-2 mx-auto w-75 mb-4">
+                                        <p class="w-100 mb-0 py-2 btn btn-outline-primary">
+                                            Event finished
                                         </p>
                                     </div>
                                 </t>
