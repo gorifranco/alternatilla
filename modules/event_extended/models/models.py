@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class EventHotelExtension(models.Model):
     _inherit = 'event.event'
@@ -56,5 +57,4 @@ class Festival(models.Model):
     cover_magazine = fields.Image(string="Cover Magazine", related='image', store=True, tracking=True)
     cover_magazine_640 = fields.Image(string="Cover Magazine 640", max_height="640", max_width="640", related='image', store=True)
     
-
-    
+       

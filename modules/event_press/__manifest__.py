@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Event roadmap",
+    'name': "Event Press Notes",
 
-    'summary': "Create event roadmaps",
+    'summary': "Add a unique press release for each event",
 
     'description': """
-Long description of module's purpose
+This module allows you to attach a press release to each event.
+
+Features:
+- Each event can have only one associated press note
+- HTML fields for press note and press call content
+- Support for attaching multiple images
+- Clean separation from the core event module for better access control
     """,
 
     'author': "Gori",
@@ -18,15 +24,13 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'event', 'event_extended', 'artistas', 'event_schedule'],
+    'depends': ['base', 'event'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/roadmap_report.xml',
-        'views/roadmap_es.xml',
-        'views/roadmap_cat.xml',
-        'views/roadmap_en.xml'
+        'security/ir.model.access.csv',
+        'views/event_press_views.xml',
+        'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

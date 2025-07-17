@@ -1,49 +1,58 @@
 <template id="event_roadmap_cat">
     <t t-call="web.internal_layout">
         <div class="page">
-            <div class="row">
-                <div class="col-2 flex flex-column">
+            <div class="row mt-0 mb-0">
+                <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4"
+                    style="background-color: lightgray">
                     <span style="font-weight: bold;">Concert:</span>
                     <t t-if="doc.festival">
-                        <br />
-                        <span style="font-weight: bold;">Festival:</span>
+                        <div class="pt-2">
+                            <span style="font-weight: bold;">Festival:</span>
+                        </div>
                     </t>
 
                 </div>
-                <div class="col-10 flex flex-column">
-                    <span t-field="doc.name" />
+                <div class="col-10 flex flex-column mt-0 mb-0 pt-2 ps-4">
+                    <span t-field="doc.name" class="text-uppercase" />
                     <t t-if="doc.festival">
-                        <br />
-                        <span t-field="doc.festival.name" />
+                        <div class="pt-2">
+                            <span t-field="doc.festival.name" />
+                        </div>
                     </t>
 
                 </div>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-2">
+            <hr class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+            <div class="row mt-0 mb-0">
+                <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4"
+                    style="background-color: lightgray">
                     <span style="width: 20%; font-weight: bold;">Data:</span>
                 </div>
-                <div class="col-10">
+                <div class="col-10 pt-2 ps-4">
                     <span t-field="doc.date_begin"
                         t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
                 </div>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-2">
+
+            <hr class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+            <div class="row mt-0 mb-0">
+                <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4"
+                    style="background-color: lightgray">
                     <span style="width: 20%; font-weight: bold;">Ciutat:</span>
                 </div>
-                <div class="col-10">
+                <div class="col-10 pt-2 ps-4">
                     <span t-field="doc.address_id.city" />
                 </div>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-2">
+
+            <hr class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+
+            <div class="row mt-0 mb-0">
+                <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4"
+                    style="background-color: lightgray">
                     <span style="width: 20%; font-weight: bold;">Espai:</span>
                 </div>
-                <div class="col-10">
+                <div class="col-10 pt-2 pb-2 ps-4">
                     <span t-field="doc.address_id.name" />
                     <br />
                     <span t-field="doc.address_id.street" />
@@ -58,13 +67,13 @@
                 </div>
             </div>
 
-            <div class="row">
-
-                <div class="col-2">
+            <div t-if="len(doc.address_id.child_ids) &gt; 0" class="row mt-0 mb-0">
+                <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4 pe-4"
+                    style="background-color: lightgray">
                     <span style="width: 20%; font-weight: bold;">Contactes espai:</span>
                 </div>
 
-                <div class="col-10">
+                <div class="col-10 pt-2 ps-4">
                     <t t-foreach="doc.address_id.child_ids" t-as="contact">
                         <span t-field="contact.name" />: <span t-field="contact.email" />
                         <span
@@ -89,12 +98,13 @@
                     </div>
                 </div>
             -->
-            <hr />
-            <div class="row">
-                <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Organitzador:</span>
+            <hr class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+            <div class="row mt-0 mb-0">
+                <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4"
+                    style="background-color: lightgray">
+                    <span style="width: 20%; font-weight: bold;">Organizador:</span>
                 </div>
-                <div class="col-10">
+                <div class="col-10 pt-2 pb-2 ps-4">
                     <strong t-field="doc.organizer_id" />
                     <span>:</span>
                     <t t-foreach="doc.organizer_id.child_ids" t-as="contact">
@@ -105,7 +115,7 @@
                     </t>
                     <t t-if="doc.technics">
                         <br />
-                        <strong>Staff técnico:</strong>
+                        <strong>Staff tècnic:</strong>
                         <t t-foreach="doc.technics" t-as="tec">
                             <br />
                             <span>* </span>
@@ -120,12 +130,13 @@
             </div>
 
             <t t-if="doc.promoter_id">
-                <hr />
-                <div class="row">
-                    <div class="col-2">
+                <hr class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+                <div class="row mt-0 mb-0">
+                    <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4"
+                        style="background-color: lightgray">
                         <span style="width: 20%; font-weight: bold;">Promotor:</span>
                     </div>
-                    <div class="col-10">
+                    <div class="col-10 pt-2 ps-4">
                         <span t-field="doc.promoter_id" />
                         <t t-foreach="doc.promoter_id.child_ids" t-as="contact">
                             <br />
@@ -141,101 +152,112 @@
                 </div>
             </t>
 
-            <hr />
-            <div class="row">
-                <div class="col-2">
-                    <span style="width: 20%; font-weight: bold;">Contactes artistes:</span>
+            <hr class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+            <div class="col-2 ps-4">
+                <span style="width: 20%; font-weight: bold;">Contacte artista:</span>
+            </div>
+            <div class="col-3">Mánager <div>
+                    <t t-foreach="doc.bands" t-as="band">
+                        <span t-out="band.name" />
+
+                        <div class="col-3"> Mànager <div>
+                                <span t-field="band.manager" />
+                            </div>
+                    <div
+                                t-if="not is_html_empty(band.manager.phone)">
+                                <span t-field="band.manager.phone" />
+                                <br />
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <span>Músics:</span>
+                            <t t-foreach="band.artists" t-as="artista">
+                                <br />
+                                <span>*</span>
+                                <span t-field="artista.name" />
+                                <span>: </span>
+                                <span t-field="artista.contact.phone" />
+                            </t>
+                        </div>
+                    </t>
                 </div>
 
-                <t t-foreach="doc.bands" t-as="band">
-                    <span t-out="band.name" />
-
-                    <div class="col-3"> Mànager <div>
-                            <span t-field="band.manager" />
+            <t
+                    t-if="doc.hotel_id">
+                    <hr class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+                    <div class="row mt-0 mb-0">
+                        <div class="col-2 flex flex-column mt-0 mb-0 pb-2 pt-2 ps-4"
+                            style="background-color: lightgray">
+                            <span style="width: 20%; font-weight: bold;">Hotel:</span>
                         </div>
-                    <div
-                            t-if="not is_html_empty(band.manager.phone)">
-                            <span t-field="band.manager.phone" />
-                            <br />
-                        </div>
-                    </div>
-                    <div class="col-7">
-                        <span>Músics:</span>
-                        <t t-foreach="band.artists" t-as="artista">
-                            <br />
-                            <span>*</span>
-                            <span t-field="artista.name" />
-                            <span>: </span>
-                            <span t-field="artista.contact.phone" />
-                        </t>
-                    </div>
-                </t>
-            </div>
-
-            <t t-if="doc.hotel_id">
-                <hr />
-                <div class="row">
-                    <div class="col-2">
-                        <span style="width: 20%; font-weight: bold;">Hotel:</span>
-                    </div>
-                    <div class="col-10">
-                        <span t-field="doc.hotel_id" />
+                        <div class="col-10 ps-4">
+                            <span t-field="doc.hotel_id" />
                         <br />
                         <span t-field="doc.hotel_id.street" />
                         <span>
-                        , </span>
+                , </span>
                         <span
-                            t-field="doc.hotel_id.city" />
+                                t-field="doc.hotel_id.city" />
                         <br /> Tel: <span
-                            t-field="doc.hotel_id.phone" />
+                                t-field="doc.hotel_id.phone" />
                         <br />
                         <span>
-                            Email:</span>
+                                Email:</span>
                         <span t-field="doc.hotel_id.website" />
                         <br />
                         <span
-                            t-field="doc.route_sheet_comment" />
+                                t-field="doc.route_sheet_comment" />
 
                     <t t-foreach="room_distribution"
-                            t-as="room">
-                            <span t-out="room.type" />
-                            <span>: </span>
-                            <t t-foreach="room.people" t-as="person">
-                                <span t-out="person.name" />
-                                <span>, </span>
+                                t-as="room">
+                                <span t-out="room.type" />
+                                <span>: </span>
+                                <t t-foreach="room.people" t-as="person">
+                                    <span t-out="person.name" />
+                                    <span>, </span>
+                                </t>
+                                <span>. </span>
+                                <span t-out="room.description" />
                             </t>
-                            <span>. </span>
-                            <span t-out="room.description" />
-                        </t>
+                        </div>
                     </div>
+                </t>
+ <hr
+                    class="row mt-0 mb-0 pt-0 pb-0 w-100" />
+
+                                    <div
+                    class="row pb-2 pt-2 mt-0 mb-0 ps-4"
+                    style="background-color: lightgray;">
+                    <strong>Horaris:</strong>
                 </div>
-            </t>
-            <hr />
 
-            <strong class="mb-2">Horaris:</strong>
-            <div style="height: 3px; width: 100%" />
+                        <div
+                    style="height: 3px; width: 100%" />
+            <t
+                    t-set="sorted_schedule"
+                    t-value="doc.schedule.sorted(key=lambda h: h.start)" />
 
-            <t t-set="sorted_schedule"
-                t-value="doc.schedule.sorted(key=lambda h: h.start)" />
+            <span
+                    t-field="doc.date_begin"
+                    t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
 
-            <span t-field="doc.date_begin"
-                t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
-
-            <t t-set="current_date" t-value="None" />
+            <t
+                    t-set="current_date" t-value="None" />
 
             <div class="col-12">
-                <t t-foreach="sorted_schedule" t-as="horari">
-                    <t t-if="not current_date or horari.start.date() != current_date">
-                        <t t-set="current_date" t-value="horari.start.date()" />
-                        <br />
-                        <span style="font-weight: bold;"
-                            t-field="current_date"
-                            t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
-                        <br />
+                    <t t-foreach="sorted_schedule" t-as="horari">
+                        <t t-if="not current_date or horari.start.date() != current_date">
+                            <t t-set="current_date" t-value="horari.start.date()" />
+                            <br />
+                            <span style="font-weight: bold;"
+                                t-field="current_date"
+                                t-options="{&quot;format&quot;: &quot;dd/MM/YYYY HH:mm&quot;}" />
+                            <br />
+                        </t>
+                        <span style="padding-right: 2px;">:</span>
+                        <span t-out="horari.description" />
                     </t>
-                    <span style="padding-right: 2px;">:</span>
-                    <span t-out="horari.description" />
-                </t>
+                </div>
             </div>
         </div>
     </t>
