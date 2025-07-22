@@ -13,6 +13,8 @@ class Image(models.Model):
     image_1024 = fields.Image("Image 1024px", related="image", max_width=1024, max_height=1024, store=True)
     image_256 = fields.Image("Image 256px", related="image", max_width=256, max_height=256, store=True)
     image_64 = fields.Image("Image 64px", related="image", max_width=64, max_height=64, store=True)
+    mimetype = fields.Char(string="MIME Type", default='image/png')
+    
 
     uri = fields.Char(compute="_compute_uri", store=True)
 

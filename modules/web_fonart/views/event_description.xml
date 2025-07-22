@@ -1,0 +1,384 @@
+<odoo>
+    <record id="website_event.event_description_full" model="ir.ui.view">
+        <field name="name">Event Description Fonart</field>
+        <!-- <field name="model">website.event</field> -->
+        <field name="key">website_event.event_description_full</field>
+        <field name="mode">primary</field>
+        <field name="type">qweb</field>
+        <field name="priority">16</field>
+        <field name="website_id" ref="website_fonart" />
+        <field name="arch" type="xml">
+
+            <t name="Event Description" track="1" t-name="website_event.event_description_full">
+                <t t-set="hide_submenu" t-value="True" />
+                <t t-set="hide_register_cta" t-value="True" />
+                <t t-set="opt_event_description_cover_hidden"
+                    t-value="is_view_active('website_event.opt_event_description_cover_hidden')" />
+                <t t-set="opt_event_description_cover_top"
+                    t-value="is_view_active('website_event.opt_event_description_cover_top')" />
+                <t t-set="edition_cover_only"
+                    t-value="opt_event_description_cover_hidden and request.env.user.has_group('event.group_event_manager')" />
+
+                <t t-call="website_event.event_details">
+                    <div t-if="toast_message" class="o_wevent_register_toaster d-none"
+                        t-att-data-message="toast_message" />
+
+                    <t t-if="opt_event_description_cover_top" t-call="website.record_cover">
+                        <t t-set="_record" t-value="event" />
+                        <t t-set="use_filters" t-value="True" />
+                        <t t-set="use_size" t-value="True" />
+                        <t t-set="use_text_align" t-value="True" />
+                        <t t-set="additionnal_classes"
+                            t-value="'o_wevent_event_main_cover o_wevent_event_main_cover_top overflow-hidden h-auto'" />
+
+                        <div class="container d-flex flex-grow-1 h-100 w-100">
+                            <div id="o_wevent_event_main_cover_content"
+                                class="d-flex flex-column align-items-baseline w-100 py-3">
+                                <span t-if="event.is_participating"
+                                    class="badge text-bg-success o_wevent_badge">
+                                    <i class="fa fa-check me-2" role="img" />Registered </span>
+                                <div class="w-100 mt-auto">
+                                    <h2 t-field="event.name" itemprop="name"
+                                        placeholder="Títol de l'esdeveniment" class="mt-3" />
+                                    <p class="lead" t-field="event.subtitle"
+                                        placeholder="Subtítol de l'esdeveniment" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                    <section id="o_wevent_event_main" class="h-100"
+                        t-cache="event if not editable and event.website_published else None">
+                        <div class="container overflow-hidden pb-5">
+                            <div class="row">
+                                <div class="col pe-xxl-5">
+                                    <t t-call="website_event.navbar" />
+                                    <!-- Show the button tickets only on mobile -->
+                                    <div class="o_wevent_event_main_cta_block d-lg-none mb-3">
+                                        <t t-call="website_event.registration_template">
+                                            <t t-set="cta_additional_classes">w-100 py-sm-3 mt-sm-2</t>
+                                        </t>
+                                    </div>
+                                    <!-- Description -->
+                                    <div id="o_wevent_event_main_col">
+                                        <div t-if="edition_cover_only"
+                                            class="css_non_editable_mode_hidden o_not_editable bg-info-light border border-info border-bottom-0 rounded-top p-2">
+                                            <em>Hidden for visitors</em>
+                                        </div>
+
+                                        <t t-if="not opt_event_description_cover_top"
+                                            t-call="website.record_cover">
+                                            <t t-set="_record" t-value="event" />
+                                            <t t-set="use_filters" t-value="True" />
+                                            <t t-set="use_size" t-value="False" />
+                                            <t t-set="use_text_align" t-value="True" />
+                                            <t t-set="additionnal_classes"
+                                                t-value="'h-75 o_wevent_event_main_cover overflow-hidden ' + ('css_non_editable_mode_hidden border border-info rounded-bottom' if edition_cover_only else 'd-none' if opt_event_description_cover_hidden else 'rounded')" />
+                                            <div id="o_wevent_event_main_cover_content"
+                                                class="p-3 mt-auto">
+                                                <span t-if="event.is_participating"
+                                                    class="badge text-bg-success o_wevent_badge">
+                                                    <i class="fa fa-check me-2" role="img" />
+                                                    Registered </span>
+                                                <!-- <h2 t-field="event.name" itemprop="name"
+                                                placeholder="Event Title" class="mt-3"/> -->
+                                                <p class="lead" t-field="event.subtitle"
+                                                    placeholder="Subtítol de l'esdeveniment" />
+                                            </div>
+                                        </t>
+                                        <div class="o_wevent_event_main_dates_mobile d-lg-none mt-3">
+                                            <t t-call="website_event.event_description_dates" />
+                                        </div>
+                                        <h2
+                                            style="margin-top: 7px; color: rgba(var(--link-color-rgb)"
+                                            t-field="event.name" 
+                                            itemprop="name" />
+                                        <span style="margin-top: 24px"
+                                            t-field="event.main_text"
+                                            itemprop="description" />
+                                    </div>
+
+                                    <t t-foreach="event.videos" t-as="video">
+                                        <div class="media_iframe_video my-4">
+                                            <div class="css_editable_mode_display" />
+                                            <div class="media_iframe_video_size" />
+                                            <iframe loading="lazy" frameborder="0"
+                                                allowfullscreen="allowfullscreen"
+                                                t-att-src="'//www.youtube.com/embed/%s?rel=0&amp;autoplay=0' % video.url" />
+                                        </div>
+                                    </t>
+
+                                    <!-- Logos entitats -->
+                                    <div class="mt-5" />
+
+                                    <t t-if="event.commitments">
+                                        <div class="w-100 m-auto mt-4">
+                                            <span>COMMITED WITH:</span>
+                                            <hr />
+                                            <div class="row">
+                                                <t t-foreach="event.commited"
+                                                    t-as="compr">
+                                                    <div class="d-flex mb-2" style="width: auto;">
+                                                        <div
+                                                            style="width: auto; max-width: 200px; display: flex; align-items: center;">
+                                                            <a t-if="compr.image_256"
+                                                                t-att-href="compr.website or '#'"
+                                                                class="d-block w-100 h-100">
+                                                                <img
+                                                                    t-att-src="image_data_uri(compr.image_256)"
+                                                                    class="img-fluid h-100 w-auto mx-auto"
+                                                                    style="object-fit: contain; height: 50px !important"
+                                                                    t-att-alt="compr.name" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+
+                                    <t t-if="event.x_studio_patrocinadors">
+                                        <div class="w-100 m-auto mt-3">
+                                            <span>AMB EL PATROCINI:</span>
+                                            <hr />
+                                            <div class="row">
+                                                <t t-foreach="event.x_studio_patrocinadors"
+                                                    t-as="compr">
+                                                    <div class="d-flex mb-2" style="width: auto;">
+                                                        <div
+                                                            style="width: auto; max-width: 200px; display: flex; align-items: center;">
+                                                            <a t-if="compr.image_256"
+                                                                t-att-href="compr.website or '#'"
+                                                                class="d-block w-100 h-100">
+                                                                <img
+                                                                    t-att-src="image_data_uri(compr.image_256)"
+                                                                    class="img-fluid h-100 w-auto mx-auto"
+                                                                    style="object-fit: contain; height: 50px !important" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+
+
+                                    <t t-if="event.x_studio_colaboradors">
+                                        <div class="w-100 m-auto mt-3">
+                                            <span>AMB LA COLABORACIÓ:</span>
+                                            <hr />
+                                            <div class="row" style="width: auto !important;">
+                                                <t t-foreach="event.x_studio_colaboradors"
+                                                    t-as="compr">
+                                                    <div class="d-flex mb-5" style="width: auto;">
+                                                        <div
+                                                            style="width: auto; max-width: 200px; display: flex; align-items: center;">
+                                                            <a t-if="compr.image_256"
+                                                                t-att-href="compr.website or '#'"
+                                                                class="d-block w-100 h-100">
+                                                                <img
+                                                                    t-att-src="image_data_uri(compr.image_256)"
+                                                                    class="img-fluid h-100 w-auto mx-auto"
+                                                                    style="object-fit: contain; height: 50px !important"
+                                                                    t-att-alt="compr.name" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+
+                                <!-- Sidebar -->
+                                <aside id="o_wevent_event_main_sidebar"
+                                    class="col-lg-4 my-3 mb-lg-0 d-print-none">
+                                    <!-- Imatges Laterals -->
+                                    <div class="o_wevent_sidebar_block pb-2 pt-6">
+
+                                        <t
+                                            t-foreach="sorted(event.x_studio_imatges_laterals, key=lambda x: x.name)"
+                                            t-as="img_lat">
+                                            <img
+                                                t-att-src="'data:image/png;base64,%s' % img_lat.datas.decode('utf-8')"
+                                                class="o_website_image h-100 w-100 py-2 rounded-2"
+                                                alt="Imagen lateral" />
+                                        </t>
+
+
+                                    </div>
+                                    <!-- CTA (desktop only) -->
+                                    <!-- Registre -->
+                                    <div class="d-none d-lg-block mb-3 mt-4">
+                                        <t
+                                            t-if="not event.x_studio_entrada_gratuita and event.x_studio_link_entrades and not event.x_studio_entrades_exhaurides">
+                                            <t t-call="website_event.registration_template">
+                                                <t t-set="cta_additional_classes">w-100 py-3</t>
+                                            </t>
+                                        </t>
+
+                                        <t t-elif="event.x_studio_entrades_exhaurides"
+                                            class="mt-auto pt-2 mx-auto w-75 mb-3">
+                                            <p
+                                                class="w-100 mb-0 py-3 text-center border border-danger rounded text-danger">
+                                                Entrades exhaurides
+                                            </p>
+                                        </t>
+
+                                        <t t-elif="event.x_studio_entrada_gratuita"
+                                            class="mt-auto pt-2 mx-auto w-75 mb-3">
+                                            <p
+                                                class="w-100 mb-0 py-3 text-center border border-primary rounded text-primary">
+                                                Entrada gratuïta
+                                            </p>
+                                        </t>
+
+                                        <t t-else="">
+                                            <p
+                                                class="w-100 mb-0 py-3 text-center border border-primary rounded text-primary">
+                                                A la venta pròximament
+                                            </p>
+                                        </t>
+                                    </div>
+
+
+                                    <!-- Date & Time (desktop only) -->
+                                    <div class="d-none d-lg-block border-bottom pb-2 mb-3">
+                                        <meta itemprop="startDate"
+                                            t-att-content="event.date_begin.isoformat()" />
+                                        <meta itemprop="endDate"
+                                            t-att-content="event.date_end.isoformat()" />
+                                        <t t-call="website_event.event_description_dates" />
+                                    </div>
+                                    <header class="d-lg-none mt-4 mb-2 py-3 border-top">
+                                        <h5 class="my-0">Event Info</h5>
+                                        <meta itemprop="eventStatus"
+                                            content="https://schema.org/EventScheduled" />
+                                    </header>
+                                    <!-- Location -->
+                                    <meta itemprop="eventAttendanceMode"
+                                        t-attf-content="https://schema.org/{{'Offline' if event.address_id else 'Online'}}EventAttendanceMode" />
+                                    <div t-if="event.address_id"
+                                        class="o_wevent_sidebar_block border-bottom pb-3 mb-4"
+                                        itemprop="location" itemscope="itemscope"
+                                        itemtype="https://schema.org/Place">
+                                        <h6 class="o_wevent_sidebar_title">Ubicació</h6>
+                                        <div class="card p-4 custom-card-shadow">
+                                            <strong class="mb-1" t-out="event.address_id.name" />
+
+                                            <div class="d-flex align-items-baseline gap-1 mb-4">
+                                                <span class="w-100">
+                                                    <!-- Ciudad -->
+                                                    <t t-if="event.address_id.city">
+                                                        <span class="text-nowrap"
+                                                            t-out="event.address_id.city + (', ' if (event.address_id.x_studio_illa.x_name or event.address_id.street) else '')" />
+                                                    </t>
+                                                    <!-- Calle -->
+                                                    <t t-if="event.address_id.street">
+                                                        <span itemprop="streetAddress"
+                                                            t-out="event.address_id.street" />
+                                                        <t
+                                                            t-if="event.address_id.x_studio_illa.x_name">
+                                                            , </t>
+                                                    </t>
+
+                                                    <!-- País -->
+                                                    <t t-if="event.address_id.x_studio_illa.x_name">
+                                                        <span itemprop="addressCountry"
+                                                            t-out="event.address_id.x_studio_illa.x_name" />
+                                                    </t>
+                                                </span>
+                                            </div>
+                                            <a
+                                                t-att-href="event.address_id.partner_latitude and event.address_id.partner_longitude and 'https://www.google.com/maps/search/?api=1&amp;query=' + str(event.address_id.partner_latitude) + '%2C' + str(event.address_id.partner_longitude) or event._google_map_link()"
+                                                target="_blank" class="btn btn-primary"
+                                                title="Veure al mapa">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    viewbox="0 0 24 24" class="align-text-top"
+                                                    role="img"
+                                                    style="height: 1em; width: 1em; padding-top: 3px;">
+                                                    <rect width="24" height="24" opacity="0" />
+                                                    <path role="presentation" fill="currentColor"
+                                                        d="M13.67 22h-.06a1 1 0 0 1-.92-.8l-1.54-7.57a1 1 0 0 0-.78-.78L2.8 11.31a1 1 0 0 1-.12-1.93l16-5.33A1 1 0 0 1 20 5.32l-5.33 16a1 1 0 0 1-1 .68z" />
+                                                </svg>
+                                                &amp;nbsp;Veure al mapa</a>
+
+                                        </div>
+
+                                    </div>
+                                    <div t-else=""
+                                        class="o_wevent_sidebar_block border-bottom pb-3 mb-4">
+                                        <h6 class="o_wevent_sidebar_title">Ubicació</h6>
+                            <i
+                                            class="fa fa-map-marker" title="Location" /> Online
+                                        event </div>
+                                    <!--
+
+                        <div t-if="event.organizer_id" class="o_wevent_sidebar_block border-bottom pb-3 mb-4"
+                                    itemprop="organizer" itemscope="itemscope"
+                                    itemtype="http://schema.org/Organization">
+                            <h6 class="o_wevent_sidebar_title">Organizer</h6>
+                            <div itemprop="name" class="mb-1" t-field="event.organizer_id"/>
+                            <small t-field="event.organizer_id" t-options="{'widget': 'contact', 'fields': ['phone', 'mobile',
+                                    'email'], 'with_microdata': True,}"/>
+                        </div>
+                        -->
+
+                                    <!-- Afegir al calendari -->
+                                    <div
+                                        t-attf-class="d-flex align-items-center flex-wrap gap-2 {{'flex-basis-50 flex-basis-md-auto' if event.is_one_day else 'mt-3'}} mb-4">
+                                        Afegir al calendari <div
+                                            t-attf-class="d-flex align-items-center flex-shrink-0 flex-grow-1 {{'gap-1 gap-md-2' if event.is_one_day else 'gap-2'}}">
+                                            <a t-att-href="iCal_url"
+                                                class="btn btn-light o_wevent_add_to_ical"
+                                                title="Add to iCal">
+                                                <i role="img" class="fa fa-apple" />
+                                            </a>
+                                            <a t-att-href="iCal_url"
+                                                class="btn btn-light o_wevent_add_to_outlook"
+                                                title="Add to Outlook">
+                                                <img
+                                                    src="/event/static/src/img/outlook-calendar.svg"
+                                                    alt="Outlook" loading="lazy" />
+                                            </a>
+                                            <a t-att-href="google_url"
+                                                class="btn btn-light o_wevent_add_to_google_calendar"
+                                                title="Add to Google" target="_blank">
+                                                <img src="/event/static/src/img/google-calendar.svg"
+                                                    alt="Google Agenda" loading="lazy" />
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Social -->
+                                    <div class="o_wevent_sidebar_block">
+                                        <h6 class="o_wevent_sidebar_title">Compartir</h6>
+                                        <p>Esbrineu el que la gent veu i diu sobre aquest
+                                            esdeveniment, i uniu-vos a la conversa.</p>
+                                        <t t-snippet-call="website.s_share">
+                                            <t t-set="_no_title" t-value="True" />
+                                            <t t-set="_classes"
+                                                t-valuef="o_wevent_sidebar_social mx-n1" />
+                                            <t t-set="_link_classes" t-valuef="o_wevent_social_link" />
+                                        </t>
+                                    </div>
+                                    <div class="mt-5 s_image_gallery" data-vcss="002">
+                                        <t t-foreach="event.x_studio_imatges_laterals_inferior"
+                                            t-as="img_lat">
+                                            <img
+                                                t-att-src="'https://www.fonart.com/web/content/%s' % img_lat.id"
+                                                class="o_website_image py-2 w-100 h-auto"
+                                                alt="Imagen lateral inferior" />
+                                        </t>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </section>
+                </t>
+            </t>
+
+
+        </field>
+    </record>
+</odoo>

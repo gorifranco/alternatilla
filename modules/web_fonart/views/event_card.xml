@@ -23,7 +23,8 @@
                             <div class="d-block h-100 w-100">
                                 <t t-call="website.record_cover">
                                     <t t-set="_record" t-value="event" />
-                                    <t t-set="_bg" t-value="event.cover_image_256" />
+                                    <t t-set="_bg"
+                                        t-value="'url(/web/image/%s/%s/cover_image_512)' % (event._name, event.id)" />
                                     <meta itemprop="startDate"
                                         t-att-content="event.date_begin.isoformat()" />
                                 </t>

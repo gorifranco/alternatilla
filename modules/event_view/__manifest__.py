@@ -18,7 +18,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'event', 'm2m_images', 'website_event', 'web'],
+    'depends': ['base', 'event', 'website_event', 'web'],
 
     # always loaded
     'data': [
